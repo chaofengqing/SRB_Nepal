@@ -1,0 +1,102 @@
+﻿Code,Country.Name,Country.Name.Original,Use in Survey
+AF,Afghanistan,Afghanistan,DHS
+AL,Albania,Albania,DHS
+AO,Angola,Angola,DHS
+AM,Armenia,Armenia,DHS
+AZ,Azerbaijan,Azerbaijan,DHS
+BD,Bangladesh,Bangladesh,DHS
+BJ,Benin,Benin,DHS
+BO,Bolivia,Bolivia,DHS
+BT,Botswana,Botswana,DHS
+BR,Brazil,Brazil,DHS
+BF,Burkina Faso,Burkina Faso,DHS
+BU,Burundi,Burundi,DHS
+KH,Cambodia,Cambodia,DHS
+CM,Cameroon,Cameroon,DHS
+CV,Cape Verde,Cape Verde,DHS
+CF,CAR,Central African Republic,DHS
+TD,Chad,Chad,DHS
+CO,Colombia,Colombia,DHS
+KM,Comoros,Comoros,DHS
+CG,Congo,Congo (Brazzaville),DHS
+CD,Congo DR,Congo Democratic Republic,DHS
+CR,Costa Rica,Costa Rica,WFS
+CI,Cote d Ivoire,Cote d'Ivoire,DHS
+DR,Dominican Rep.,Dominican Republic,DHS
+EC,Ecuador,Ecuador,DHS
+EG,Egypt,Egypt,DHS
+ES,El Salvador,El Salvador,DHS
+EK,Equatorial Guinea,Equatorial Guinea,DHS
+ER,Eritrea,Eritrea,DHS
+ET,Ethiopia,Ethiopia,DHS
+FJ,Fiji,Fiji,WFS
+GA,Gabon,Gabon,DHS
+GM,Gambia,Gambia,DHS
+GH,Ghana,Ghana,DHS
+GU,Guatemala,Guatemala,DHS
+GN,Guinea,Guinea,DHS
+GY,Guyana,Guyana,DHS
+HT,Haiti,Haiti,DHS
+HN,Honduras,Honduras,DHS
+IA,India,India,DHS
+ID,Indonesia,Indonesia,DHS
+JM,Jamaica,Jamaica,WFS
+JO,Jordan,Jordan,DHS
+KK,Kazakhstan,Kazakhstan,DHS
+KE,Kenya,Kenya,DHS
+KR,Korea Rep,"Korea, Republic of",WFS
+KY,Kyrgyzstan,Kyrgyz Republic,DHS
+LA,Lao PDR,Lao People's Democratic Republic,DHS
+LS,Lesotho,Lesotho,DHS
+LB,Liberia,Liberia,DHS
+MD,Madagascar,Madagascar,DHS
+MW,Malawi,Malawi,DHS
+MY,Malaysia,Malaysia,WFS
+MV,Maldives,Maldives,DHS
+ML,Mali,Mali,DHS
+MR,Mauritania,Mauritania,DHS
+MX,Mexico,Mexico,DHS
+MB,Moldova,Moldova,DHS
+MA,Morocco,Morocco,DHS
+MZ,Mozambique,Mozambique,DHS
+MM,Myanmar,Myanmar,DHS
+NM,Namibia,Namibia,DHS
+NP,Nepal,Nepal,DHS
+NC,Nicaragua,Nicaragua,DHS
+NI,Niger,Niger,DHS
+NG,Nigeria,Nigeria,DHS
+OS,Nigeria (Ondo State),Nigeria (Ondo State),DHS
+PK,Pakistan,Pakistan,DHS
+PA,Panama,Panama,WFS
+PY,Paraguay,Paraguay,DHS
+PE,Peru,Peru,DHS
+PH,Philippines,Philippines,DHS
+PT,Portugal,Portugal,WFS
+RW,Rwanda,Rwanda,DHS
+WS,Samoa,Samoa,DHS
+ST,Sao Tome Pr,Sao Tome and Principe,DHS
+SN,Senegal,Senegal,DHS
+SL,Sierra Leone,Sierra Leone,DHS
+ZA,South Africa,South Africa,DHS
+LK,Sri Lanka,Sri Lanka,DHS
+SD,Sudan,Sudan (North),WFS
+SD,Sudan,Sudan,DHS
+SZ,Swaziland,Swaziland,DHS
+SY,Syria,Syria,WFS
+TJ,Tajikistan,Tajikistan,DHS
+TZ,Tanzania,Tanzania,DHS
+TH,Thailand,Thailand,DHS
+TL,Timor-Leste,Timor-Leste,DHS
+TG,Togo,Togo,DHS
+TT,Trinidad & Tobago,Trinidad and Tobago,DHS
+TN,Tunisia,Tunisia,DHS
+TR,Turkey,Turkey,DHS
+TM,Turkmenistan,Turkmenistan,DHS
+UG,Uganda,Uganda,DHS
+UA,Ukraine,Ukraine,DHS
+UZ,Uzbekistan,Uzbekistan,DHS
+VE,Venezuela,Venezuela,WFS
+VN,Vietnam,Vietnam,DHS
+YE,Yemen,Yemen,DHS
+ZM,Zambia,Zambia,DHS
+ZW,Zimbabwe,Zimbabwe,DHS
