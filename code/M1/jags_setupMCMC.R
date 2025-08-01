@@ -63,22 +63,6 @@ red.info <- read.csv(paste0(input.dir, glb.normal.runname, "_postinfo.csv"), row
 logNmu    <- log(red.info["a.c[135]", "X50.percentile"]) #Nepal national baseline
 rho       <- red.info["rho", "X50.percentile"]
 sigma.eps <- red.info["sigma.eps", "X50.percentile"]
-# sigma.s   <- c(red.info[paste0("sigma.s[", 1:(S-1), "]"), "X50.percentile"], 0)
-
-# ## JAGS parameter priors
-# # JAGS parameter initial values
-# prior.info <- read.csv(paste0("data/output/", runname,
-#                               "/PRIORinfo.csv"), row.names = 1)
-# 
-# int.T0.j <- int.T3.j <- int.a.j <- int.D1.j <- int.D2.j <- int.D3.j <- rep(NA, C.adj)
-# for (j in 1:C.adj) {
-#   for (par in c("T0.j", "T3.j", "a.j", "D1.j", "D2.j", "D3.j")) {
-#     msg <- paste0("int.", par, "[", j, "] <- prior.info['", par, "[", j, "]', 'X50.percentile']")
-#     print(msg)
-#     eval(parse(text = msg))
-#   }#end of par loop
-# }#end of j loop
-
 
 ## import global adjustment model results
 adj.info <- read.csv(paste0(input.dir, glb.adj.runname, "_postinfo_exclude-alpha_jt_post.csv"), row.names = 1)
@@ -90,7 +74,6 @@ for (par in c("a", "D1", "D2", "D3")) {
 }#end of par loop
 
 cv.parameters <- 0.1
-# pri.sigma.a.c <- adj.info["sigma.a.c", "X50.percentile"]
 pri.sigma.a.c <- cv.parameters * pri.a.c.mu
 pri.sigma.D1 <- cv.parameters * pri.D1.c.mu
 pri.sigma.D2 <- cv.parameters * pri.D2.c.mu
@@ -102,16 +85,8 @@ adj.start.range <- 2050.5 - adj.year
 pri.sigma.TFRtarget.lower <- 0
 pri.sigma.TFRtarget.upper <- 10
 
-# pri.a.c.mu.lower <- 0
-# pri.a.c.mu.upper <- 2
-
 pri.sigma.a.c.lower <- 0
 pri.sigma.a.c.upper <- 2
-
-# pri.D1.c.mu.lower <- pri.D2.c.mu.lower <- pri.D3.c.mu.lower <- 0
-# pri.D1.c.mu.upper <- 40
-# pri.D2.c.mu.upper <- 40
-# pri.D3.c.mu.upper <- 40
 
 pri.sigma.D1.lower <- pri.sigma.D3.lower <- 0
 pri.sigma.D2.lower <- 1
@@ -188,8 +163,6 @@ mort.data <- c(
   list(
     # prior info
     # adjustment factor
-    # pri.T0.c.lower = pri.T0.c.lower,
-    # pri.T0.c.upper = pri.T0.c.upper,
     
     pri.sigma.TFRtarget.lower = pri.sigma.TFRtarget.lower,
     pri.sigma.TFRtarget.upper = pri.sigma.TFRtarget.upper,
@@ -204,28 +177,6 @@ mort.data <- c(
     pri.sigma.D2 = pri.sigma.D2,
     pri.sigma.D3 = pri.sigma.D3,
     
-    # pri.a.c.mu.lower = pri.a.c.mu.lower,
-    # pri.a.c.mu.upper = pri.a.c.mu.upper,
-    # 
-    # pri.D1.c.mu.lower = pri.D1.c.mu.lower,
-    # pri.D2.c.mu.lower = pri.D2.c.mu.lower,
-    # pri.D3.c.mu.lower = pri.D3.c.mu.lower,
-    # 
-    # pri.D1.c.mu.upper = pri.D1.c.mu.upper,
-    # pri.D2.c.mu.upper = pri.D2.c.mu.upper,
-    # pri.D3.c.mu.upper = pri.D3.c.mu.upper,
-    # 
-    # pri.sigma.a.c.lower = pri.sigma.a.c.lower,
-    # pri.sigma.a.c.upper = pri.sigma.a.c.upper,
-    # 
-    # pri.sigma.D1.lower = pri.sigma.D1.lower,
-    # pri.sigma.D2.lower = pri.sigma.D2.lower,
-    # pri.sigma.D3.lower = pri.sigma.D3.lower,
-    # 
-    # pri.sigma.D1.upper = pri.sigma.D1.upper,
-    # pri.sigma.D2.upper = pri.sigma.D2.upper,
-    # pri.sigma.D3.upper = pri.sigma.D3.upper,
-    
     pri.sigma.delta.lower = pri.sigma.delta.lower,
     pri.sigma.delta.upper = pri.sigma.delta.upper,
     
@@ -237,12 +188,10 @@ mort.data <- c(
   list(t.i = t.i,
        j.i = j.i,
        c.i = c.i,
-       # min.t.j = min.t.j,
        max.t.j = max.t.j,
-       I = I, C = C, #R = R,S = S,
+       I = I, C = C, 
        Tend = Tend,
        logNmu = logNmu,
-       # sigma.s = sigma.s,
        rho = rho,
        sigma.eps = sigma.eps,
        source.i = source.i,
@@ -252,31 +201,14 @@ mort.data <- c(
        A = A, C.adj = C.adj,
        c.adj = c.adj,
        indAdj.i = indAdj.i,
-       # adj.timeindex = adj.timeindex,
        index.TFRtarget.j = index.TFRtarget.j,
-       # index.TFR6.j = index.TFR6.j,
        t.a = t.a, j.a = j.a,
        gett.jk = gett.jk, nt.j = nt.j
   )
 )
 
-# #########
-# # part 4: assign initial values of parameters for JAGS model
-# global.inits <- list(
-#   T0.j = int.T0.j,
-#   # T3.j = int.T3.j,
-#   a.j = int.a.j,
-#   D1.j = int.D1.j,
-#   D2.j = int.D2.j,
-#   D3.j = int.D3.j
-# )
-# 
-# mort.inits <- function () {
-#   c(global.inits) #combine two lists
-# }
-
 ##########
-## part 5: write out JAGS model in txt format
+## part 4: write out JAGS model in txt format
 JAGSmodel.name <- paste0(runname, ".txt")
 if (First.run) source(paste0("code/", runname, "/jags_writeJAGSmodel.R"))
 
