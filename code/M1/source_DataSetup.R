@@ -6,24 +6,16 @@ data.all <- dataset
 I        <- dim(data.all)[1]; I
 
 name.i          <- data.all[, "Domain.Name"       ]
-# iso.i           <- data.all[, "Domain.Code"       ]
 year.i          <- data.all[, "Reference.Date"    ]
 method.i        <- data.all[, "Series.Type"       ]
 typename.i      <- data.all[, "Series.Category"   ]
 surveyyear.i    <- data.all[, "Series.Year"       ]
-# logSEnoimpute.i <- data.all[, "SE.logSRB.Modeling"] #before imputing for missing SEs
 logSEnoimpute.i <- data.all$SE.logSRB.Jackknife
 r.i             <- data.all[, "Observed.SRB"      ]
 logr.i          <- log(r.i)
 surveyplot.i <- paste0(typename.i, " (", surveyyear.i, ")")
 surveyplot.i <- gsub("Standard DHS", "DHS", surveyplot.i)
 surveyplot.i[typename.i == "SRS"] <- "SRS"
-
-# if (grepl("devreg", srb.filename)) name.c <- region
-# if (grepl("ecozone", srb.filename)) name.c <- ecological.zone
-# if (grepl("domain", srb.filename)) name.c <- domain.c
-# if (grepl("province", srb.filename)) name.c <- province.c
-# C <- length(name.c)
 
 ## summary of the database used to fit the model ##
 cat("There are", I, "data points in total.\n")
