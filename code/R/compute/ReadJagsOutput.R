@@ -24,10 +24,6 @@ ReadJagsOutput <- function(
                           "step", start.step, ".Rdata")
   load(paste0(jagsStep.dir, jags.filename))
   n.iter.perstep <- dim(model.update$BUGSoutput$sims.array)[1]
-  #   ntotaltemp <- n.iter.perstep*(n.steps-start.step+1)*n.chains
-  #   print(paste("A total of ", n.iter.perstep*(n.steps-start.step+1)*n.chains, "samples were obtained."))
-  #   ntotal <- min(maxiter, ntotaltemp)
-  #   print(paste("A total of ", ntotal, "samples are saved."))
   nsavepersteptemp <- min(n.iter.perstep,
                           ceiling(maxiter * 1 / (n.steps - start.step + 1) * 1 / n.chains))
   N.THIN         <- floor(n.iter.perstep / nsavepersteptemp)
