@@ -3,19 +3,7 @@
 ############################################
 ## plot the results for all the countries ##
 # read in cleaned database of SRB by Indian state
-# dataset <- read.csv(paste0(interim.dir, srb.filename),
-#                     header = TRUE, stringsAsFactors = FALSE, strip.white = TRUE)
-# data.all <- dataset[dataset$Inclusion, ]
-# 
-# name.i          <- data.all[, "Domain.Name"       ]
-# # iso.i           <- data.all[, "Domain.Code"       ]
-year.i          <- data.all[, "Reference.Date"    ]
-# method.i        <- data.all[, "Series.Type"       ]
-# typename.i      <- data.all[, "Series.Category"   ]
-# surveyyear.i    <- data.all[, "Series.Year"       ]
-# logSEnoimpute.i <- data.all[, "SE.logSRB.Modeling"] #before imputing for missing SEs
-# r.i             <- data.all[, "Observed.SRB"      ]
-# logr.i          <- log(r.i)
+
 surveyplot.i <- paste0(typename.i, " (", surveyyear.i, ")")
 surveyplot.i <- gsub("Standard DHS", "DHS", surveyplot.i)
 surveyplot.i[typename.i == "SRS"] <- "SRS"
@@ -62,7 +50,6 @@ layout(matrix(c(1, 1, 1, 4,
                 3, 3, 3, 4), nr = 3, nc = 4, byrow = TRUE))
 par(cex.lab = 2.7, cex.axis = 2.5, mgp = c(6.2, 1.4, 0), mar = c(4, 8.2, 4, 1),
     cex.main = 3.2, las = 1, tcl = -1)
-# R.IND.qt <- res.IND.full$R.qt
 year.i <- rep(years.t-0.5, each = C)
 r.i <- c(res.proj[["R2.jqt"]][name.c, 2, ])
 surveyplot.i <- rep(name.c, times = Tend)
@@ -83,8 +70,7 @@ PlotCIbandwithDataseries(
   x.lim = range(year.i) + c(-1, 1), max.legend = 60,
   ylab = "Sex Ratio at Birth", xlab = "", cutoff = exp(logNmu),
   lwd.dataseries = 2, legendSurvey.posi = "topright", cex.legend = 2.5)
-# abline(v = 2016, col = "grey", lwd = 1.5)
-# axis(1, at = 2016, labels = 2016, cex = 2.5)
+
 # zoom in on 1980-2016
 yr.start <- 1980
 yr.end <- 2016
@@ -93,7 +79,6 @@ r.i <- c(res.proj[["R2.jqt"]][name.c, 2, paste(yr.start:yr.end)])
 surveyplot.i <- rep(name.c, times = length(yr.start:yr.end))
 plot.lim <- range(r.i, na.rm = TRUE)
 PlotCIbandwithDataseries(
-  # if.SurveyLegend = TRUE, if.sepLegendPage = TRUE,
   dataseries = r.i, SElim = plot.lim, datalim = plot.lim,
   baseSeries = "VR", Source = surveyplot.i,
   main = paste0("zoom in ", yr.start, "-", yr.end),
