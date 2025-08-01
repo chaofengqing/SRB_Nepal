@@ -1,10 +1,4 @@
 
-# year.i          <- data.all[, "Reference.Date"    ]
-# surveyplot.i <- paste0(typename.i, " (", surveyyear.i, ")")
-# surveyplot.i <- gsub("Standard DHS", "DHS", surveyplot.i)
-# surveyplot.i[typename.i == "SRS"] <- "SRS"
-# VRseries.name <- "SRS"
-
 pdf(paste0(fig.dir, "CIs_SRB_Nepal_province_", runname, "_bmj.pdf"),
     height = 50, width = 25)
 text.cex <- 4.5
@@ -13,9 +7,7 @@ par(cex.lab = text.cex, cex.axis = text.cex, mgp = c(11, 3, 0), mar = c(5, 14, 6
 plot.range <- range(res.proj$a.jqt, res.proj[["R2.jqt"]], na.rm = TRUE)
 for (country in name.c) {
   c <- which(country == name.c)
-  # c.select <- which(name.i == name.c[c])
   # # sort by survey date to get nicer legend
-  # select <- c.select[order(surveyplot.i[c.select])]
   
   R.qt <- res.proj[["R2.jqt"]][country, , ]
   
