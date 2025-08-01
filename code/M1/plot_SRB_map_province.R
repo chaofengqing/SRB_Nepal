@@ -40,7 +40,6 @@ for (yr in seq(1980, 2050, 5)) {
     
     # Find the center of each region and label lat and lon of centers
     centroids <- gCentroid(npl1.robin, byid=TRUE)
-    # select.names <- is.element(npl1.robin$NAME_1, name.show.result)
     centroidLons <- coordinates(centroids)[, 1]
     centroidLats <- coordinates(centroids)[, 2]
     names(centroidLons) <- names(centroidLats) <- npl1.robin$NAME_1
@@ -70,7 +69,6 @@ for (yr in seq(1980, 2050, 5)) {
     ## plot the map ##
     plot(npl1.robin,border=1,bg=background.color, col = myPalette[npl1.robin$col_no],
          lwd = boundary.lwd, main = paste0("Sex Ratio at Birth Projection (", yr, ")"))#, ylim = c(10^6*2.967999, 10^6*2.968)
-    # title(paste0("Sex Ratio at Birth Projection (", yr, ")"), cex.main = 1, outer = TRUE)
     text(centroidLons, centroidLats, labels = code.plot, cex = 1)
     legend(legend = cutoff.labs, bg = "white", box.col = "white",
            fill = myPalette, "bottomleft", cex = 1)
@@ -117,7 +115,6 @@ for (yr in plot.yr) {
   
   # Find the center of each region and label lat and lon of centers
   centroids <- gCentroid(npl1.robin, byid=TRUE)
-  # select.names <- is.element(npl1.robin$NAME_1, name.show.result)
   centroidLons <- coordinates(centroids)[, 1]
   centroidLats <- coordinates(centroids)[, 2]
   names(centroidLons) <- names(centroidLats) <- npl1.robin$NAME_1
