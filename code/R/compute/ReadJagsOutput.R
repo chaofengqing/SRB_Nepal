@@ -55,10 +55,6 @@ ReadJagsOutput <- function(
     }#end of if (n.steps > 1)
   }#end of chain loop
   
-  #   n.sample.max = 10000000
-  #   if (n.sim > n.sample.max){
-  #     mcmc.array <- mcmc.array[seq(1, n.sample.max, length.out = n.sample.max), , ]  
-  #   }
   
   return(mcmc.array)
   
