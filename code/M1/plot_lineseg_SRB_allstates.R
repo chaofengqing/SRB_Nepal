@@ -12,8 +12,6 @@ for (k in 1:2) {
   name.show.result <- name.c
   pdf(paste0(fig.dir, "SRB_all_states_", floor(order.of.year), "order.pdf"),
       height = 4.5, width = 5)
-  # par(mar = c(4.5, 12.3, 0.5, 0.5), cex.lab = text.cex, mgp = c(3, 0.7, 0), 
-  #     cex.main = text.cex, cex.axis = text.cex, tcl = -0.5)
   par(mar = c(2.5, 4.5, 0.5, 0.5), cex.lab = text.cex, mgp = c(1.5, 0.5, 0), 
       cex.main = text.cex, cex.axis = text.cex, tcl = -0.5)
   R.cqt <- res.proj$R2.jqt
@@ -28,7 +26,6 @@ for (k in 1:2) {
     colinfo = c("lightgrey", "hotpink4", "hotpink"), vertical.gap = 3,
     lwd.main = 3, lwd.cutoff = 1, cex = dot.cex,
     x.range = c(1.02, 1.14), reset.xlim = TRUE)
-  # abline(v = N.mu, col = "grey")
   order.c <- order(res.proj$R2.jqt[, 2, paste(years.select[1]-0.5)])
   for (c in 1:C) {
     segments(x0 = res.proj$R2.jqt[name.c[order.c[c]], 1, "1980"],
