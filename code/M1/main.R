@@ -16,7 +16,7 @@ DoMCMC    <- TRUE  # get step-wise JAGS output?
 
 OneCountry.run <- grepl("_one", runname) # whether this is a one-country run
 
-workdir <- "/Users/chaof/work/"
+workdir <- "Your own dictionary"
 setwd(file.path(workdir, projname))
 
 # setup directories
