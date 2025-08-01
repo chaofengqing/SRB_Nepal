@@ -28,7 +28,7 @@ for (country in plot.country) { #c in c.asia: now plot a subset of Asian countri
   R1.qt <- res.proj[["R1.jqt"]][j, , select.t]
   R2.qt <- res.proj[["R2.jqt"]][j, , select.t]
   R3.qt <- res.proj[["R3.jqt"]][j, , select.t]
-  # delta.l <- res.proj[["delta.jl"]][j, ]
+
   s2.l.prob <- res.proj[["S2.l.select.prob.j"]][j]*100
   s3.l.prob <- res.proj[["S3.l.select.prob.j"]][j]*100
   plot.range <- range(R1.qt, R2.qt, R3.qt, exp(logr.i[select]), na.rm = TRUE)
@@ -95,7 +95,6 @@ for (scna in 1:3) {
   for (country in name.c) { #c in c.asia: now plot a subset of Asian countries
     par(cex.lab = text.cex, cex.axis = text.cex, mgp = c(11.3, 2.3, 0), mar = c(6, 14, 6, 11),
         cex.main = 4, las = 1, tcl = -1)
-    # layout(t(c(1, 1, 1, 1, 1, 1, 1, 2, 2)), respect = FALSE)
     j <- which(name.c == country)
     c <- which(name.c == country)
     c.select <- which(name.i == name.c[c] & year.i > 1950)
@@ -104,7 +103,6 @@ for (scna in 1:3) {
     
     R.qt <- res.proj[[paste0("R", scna, ".jqt")]][j, , select.t]
     a.qt <- matrix(res.proj[["a.jqt"]][j, 2, 1], nr = Per, nc = Tend)
-    # delta.l <- res.full[["delta.jl"]][j, ]
     plot.range <- range(R.qt, exp(logr.i[select]), na.rm = TRUE)
     par(las = 1)
     PlotCIbandwithDataseries(
@@ -112,7 +110,6 @@ for (scna in 1:3) {
       dataseries = logr.i, dataseriesSE = logSEnoimpute.i, year.t = plot.year,
       CI1s = R.qt, nameCI1 = "Provincial SRB",
       CI2s = a.qt, nameCI2 = "National baseline",
-      # CI3s = Rall.qt, nameCI3 = "National SRB (full run in paper)",
       Source = surveyplot.i, baseSeries = "VR", x.lim = range(round(plot.year)),
       x = year.i, select.x = select,
       SElim = plot.range, datalim = plot.range,
@@ -146,15 +143,6 @@ for (scna in 1:3) {
     text(x = end.yr, y = max(tfr, na.rm = TRUE) - 0.2, pos = 2, col = col.tfr, cex = text.cex,
          labels = paste0(floor(end.yr)))
     
-    # PlotCIbandwithDataseries(
-    #   if.xlimFix = TRUE, if.SurveyLegend = TRUE, if.LogScale = TRUE,
-    #   if.NewPlot = FALSE, if.sepLegendPage = TRUE,
-    #   dataseries = logr.i, dataseriesSE = logSEnoimpute.i,
-    #   Source = surveyplot.i, baseSeries = "VR",
-    #   x = year.i, select.x = select, cutoff = NULL,
-    #   cex.dataseries = 2, lwd.dataseries = 0.7,
-    #   cex.legend = ifelse(name.c[c] == "China", 2, ifelse(name.c[c] == "India", 2.3, 2.5)),
-    #   alpha.polygon = 0, max.legend = 60)
   }#end of c loop
   dev.off()
   
