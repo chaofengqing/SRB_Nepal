@@ -105,16 +105,6 @@ model {
     sigma.D1 <- pri.sigma.D1
     sigma.D2 <- pri.sigma.D2
     sigma.D3 <- pri.sigma.D3
-
-    
-    # a.c.mu  ~ dunif(pri.a.c.mu.lower, pri.a.c.mu.upper)
-    # D1.c.mu ~ dunif(pri.D1.c.mu.lower, pri.D1.c.mu.upper)
-    # D2.c.mu ~ dunif(pri.D2.c.mu.lower, pri.D2.c.mu.upper)
-    # D3.c.mu ~ dunif(pri.D3.c.mu.lower, pri.D3.c.mu.upper)
-    # sigma.a.c ~ dunif(pri.sigma.a.c.lower, pri.sigma.a.c.upper)
-    # sigma.D1  ~ dunif(pri.sigma.D1.lower, pri.sigma.D1.upper)
-    # sigma.D2  ~ dunif(pri.sigma.D2.lower, pri.sigma.D2.upper)
-    # sigma.D3  ~ dunif(pri.sigma.D3.lower, pri.sigma.D3.upper)
     
     delta.mu.probscale ~ dunif(pri.delta.mu.probscale.lower, pri.delta.mu.probscale.upper)
     sigma.TFRtarget ~ dunif(pri.sigma.TFRtarget.lower, pri.sigma.TFRtarget.upper)
