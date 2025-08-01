@@ -35,14 +35,6 @@ if.read.csv  <- !if.read.xlsx
 if (CleanData) {
   ## import survey information ##
   ## read in DHS country code description file to identify country folder ##
-  if (if.read.xlsx) {
-    # library(xlsx) # read in xlsx file
-    # data.DHSCountryInfo <- read.xlsx(paste0(aux.data.dir, "SurveyInfo.xlsx"),
-    #                                  sheetName = "Country Code", stringsAsFactors = FALSE)
-    # 
-    # data.DHSinfo <- read.xlsx(paste0(aux.data.dir, "SurveyInfo.xlsx"),
-    #                           sheetName = "DHS", stringsAsFactors = FALSE)
-  }#end of if(if.read.xlsx)
 
   if (if.read.csv) {
     data.DHSCountryInfo <- read.csv(paste0(aux.data.dir, "SurveyInfo_CountryInfo.csv"),
@@ -102,7 +94,6 @@ domain.c <-
 # 11  Terai Midwestern
 # 12  Terai Farwestern
 
-# code.c <- GetIndiaStateCode(name.c)
 name.c <- province.c
 C <- length(unique(name.c)); C
 
