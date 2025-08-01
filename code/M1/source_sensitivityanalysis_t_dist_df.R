@@ -1,7 +1,7 @@
 
 runname.list <- c("M1", "M1_t_dist_df")
 par.list <- c("T0.j")
-# rud.num <- 1
+
 
 for (par in par.list) {
   msg.out <- NULL
