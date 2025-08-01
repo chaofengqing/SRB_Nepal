@@ -162,10 +162,6 @@ PlotCIbandwithDataseries <- function(
                                  CI1s, CI2s, CI3s, na.rm = TRUE)))      
     }
     if(!(if.dataseriesSE) & if.dataseries) {
-      # Ylim = c(max(datalim[1], min(cutoff, dataseries,
-      #                              CI1s, CI2s, CI3s, na.rm = TRUE)),
-      #          min(datalim[2], max(cutoff, dataseries,
-      #                              CI1s, CI2s, CI3s, na.rm = TRUE)))
       Ylim <- datalim
     }
     if(!(if.dataseriesSE) & !(if.dataseries)) {
