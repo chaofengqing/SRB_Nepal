@@ -16,8 +16,8 @@ DoMCMC    <- FALSE  # get step-wise JAGS output?
 
 OneCountry.run <- grepl("_one", runname) # whether this is a one-country run
 
-workdir <- "/Users/chaof/Dropbox/work/"
-workdir <- "/Users/fengqingchao/Dropbox/work/"
+workdir <- "Your own working dictionary"
+workdir <- "Your own working dictionary"
 setwd(file.path(workdir, projname))
 
 # setup directories
@@ -60,8 +60,6 @@ load(paste0(output.dir, "mcmc.array_", runname, ".rda")) #mcmc.array
 L <- dim(mcmc.array)[1] * dim(mcmc.array)[2]; L
 
 ## convergence check ##
-# convergeplot.dir <- paste0(fig.dir, "convergence/pre/")
-# dir.create(convergeplot.dir, showWarnings = FALSE)
 source(paste0("code/", runname, "/jags_ConvergenceCheck.R"))
 
 ## reconstruct all logP.ct's ##
