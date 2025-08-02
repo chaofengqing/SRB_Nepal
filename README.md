@@ -22,7 +22,7 @@ This project presents a subnational estimation and projection of Nepal’s Sex R
 
 ## Methodology
 
-The study estimates Vietnam's SRBs by seven provinces from 1980 to 2019 and projects them until 2050 using a Bayesian hierarchical time series mixture model. This model incorporates uncertainties from observations and natural year-by-year fluctuations. The full model write ups are in the [published paper](https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-022-12693-0#citeas).
+The study estimates Nepal's SRBs by seven provinces from 1980 to 2016 and projects them until 2050 using a Bayesian hierarchical time series mixture model. This model incorporates uncertainties from observations and natural year-by-year fluctuations. The full model write ups are in the [published paper](https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-022-12693-0#citeas).
 
 We used the JAGS (Just Another Gibbs Sampler) to do Bayesian inference. The relevant R code to call JAGS and to get the MCMC samples are (they are called automatically in /code/main.R):
 
