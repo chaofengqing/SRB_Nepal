@@ -1,6 +1,6 @@
 This repository presents the first subnational study of Sex Ratio at Birth (SRB) trends and projections in Nepal from 1980 to 2050. We adopt a **Bayesian hierarchical time-series mixture model** to estimate and forecast SRB across seven provinces in Nepal,. The model leverages an extensive database compiled from all available censuses and nationally representative surveys.
 
-**Please refer to the [published paper]([https://doi.org/10.1186/s12889-022-12693-0](https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-022-12693-0)) regarding to this repository for details on the research background/context, model implementation, data sources, and policy implications**:
+**Please refer to the [published paper](https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-022-12693-0) regarding to this repository for details on the research background/context, model implementation, data sources, and policy implications**:
 
 - Main paper: Chao, F., KC, S. & Ombao, H. Estimation and probabilistic projection of levels and trends in the sex ratio at birth in seven provinces of Nepal from 1980 to 2050: a Bayesian modeling approach. *BMC Public Health* **22**, 358 (2022). https://doi.org/10.1186/s12889-022-12693-0
 - Technical appendix of the main paper: 
