@@ -3,7 +3,7 @@ This repository presents the first subnational study of Sex Ratio at Birth (SRB)
 **Please refer to the [published paper](https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-022-12693-0) regarding to this repository for details on the research background/context, model implementation, data sources, and policy implications**:
 
 - Main paper: Chao, F., KC, S. & Ombao, H. Estimation and probabilistic projection of levels and trends in the sex ratio at birth in seven provinces of Nepal from 1980 to 2050: a Bayesian modeling approach. *BMC Public Health* **22**, 358 (2022). https://doi.org/10.1186/s12889-022-12693-0
-- Technical appendix of the main paper: 
+- Technical appendix of the main paper: Chao, Fengqing; K.C., Samir; Ombao, Hernando (2022). Technical Appendix for Estimation and probabilistic projection of levels and trends in the sex ratio at birth in seven provinces of Nepal from 1980 to 2050: a Bayesian modeling approach. figshare. Dataset. https://doi.org/10.6084/m9.figshare.19077155.v1
 
 ## Repository Structure
 
