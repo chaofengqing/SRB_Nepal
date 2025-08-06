@@ -1,4 +1,31 @@
-
+###############################################################################
+# Sex ratio at birth in Vietnam among six subnational regions during 1980–2050, 
+# estimation and probabilistic projection using a Bayesian hierarchical time ser##ies model 
+# with 2.9 million birth records.
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 4 Aug 2025
+# 
+# source_BasicSetup.R
+# 
+# This script sets up the basic stuff for all the rest script in code/ folder.
+# 1. assign constants;
+# 2. install packages and call libraries;
+# 3. prepare for JAGS model.
+#
+# used for which run: Main.run
+#
+# this script is called by any other scripts: main.R
+#
+#
+# functions called: null
+# 
+# input data: aux.data.dir which contains the information for the surveys and countries.
+#             database_for_modeling_2021-02-10.csv is the cleaned data.
+#
+# output data: null
+#
+###############################################################################
 ## basic setup ##
 aux.data.dir <- "data/input/Auxdata/"
 
@@ -10,10 +37,6 @@ aux.data.dir <- "data/input/Auxdata/"
 # install.packages("Hmisc")
 # install.packages("readstata13")
 
-if (CleanData) {
-  library(foreign) # read in SPSS data (for DHS)
-}#end of if(CleanData)
-
 ## call function scritps ##
 funcode.dirs <- list.dirs("code/R", full.names = TRUE, recursive = FALSE)
 for (code.dir in funcode.dirs) {
@@ -24,9 +47,9 @@ for (code.dir in funcode.dirs) {
     script.name <- paste0(code.dir, "/", file)
     print(paste("call code:", script.name))
     source(script.name)
-  }#end of file loop
+  } # end of file loop
   
-}#end of code.dir loop
+} # end of code.dir loop
 
 
 if.read.xlsx <- FALSE #FALSE # FALSE: if cannot load library(xlsx)
