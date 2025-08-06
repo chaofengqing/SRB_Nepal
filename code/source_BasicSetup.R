@@ -1,10 +1,10 @@
 ###############################################################################
-# Sex ratio at birth in Vietnam among six subnational regions during 1980–2050, 
-# estimation and probabilistic projection using a Bayesian hierarchical time ser##ies model 
-# with 2.9 million birth records.
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
 #
 # Code constructed by: Fengqing CHAO
-# Code last revised by: Qiqi Qiang on 4 Aug 2025
+# Code last revised by: Qiqi Qiang on 6 Aug 2025
 # 
 # source_BasicSetup.R
 # 
@@ -21,7 +21,7 @@
 # functions called: null
 # 
 # input data: aux.data.dir which contains the information for the surveys and countries.
-#             database_for_modeling_2021-02-10.csv is the cleaned data.
+#             database_for_modeling_2020-05-11.csv.csv is the cleaned data.
 #
 # output data: null
 #
@@ -55,32 +55,18 @@ for (code.dir in funcode.dirs) {
 if.read.xlsx <- FALSE #FALSE # FALSE: if cannot load library(xlsx)
 if.read.csv  <- !if.read.xlsx
 
-if (CleanData) {
-  ## import survey information ##
-  ## read in DHS country code description file to identify country folder ##
-
-  if (if.read.csv) {
-    data.DHSCountryInfo <- read.csv(paste0(aux.data.dir, "SurveyInfo_CountryInfo.csv"),
-                                    header = TRUE, stringsAsFactors = FALSE, strip.white = TRUE)
-
-    data.DHSinfo <- read.csv(paste0(aux.data.dir, "SurveyInfo_DHS.csv"),
-                             header = TRUE, stringsAsFactors = FALSE, strip.white = TRUE)
-  }#end of if(if.read.csv)
-}#end of if(CleanData)
-
-
 ## info to save for SRB related data ##
 Nsim <- 1000 # number of simulations #FQ!!! do not use N which is para for natural SRB!!!
 percentiles <- c(0.025, 0.500, 0.975)
 Per <- length(percentiles)
 SRB0 <- 1.05
 
-# filter out extreme values # FQ: NEED TO CHANGE THIS VALUE!! (AFTER DATA QUALITY ANALYSIS FINISHED)
+# filter out extreme values 
 extremeSRB <- 5
 
 
 # Jackknife settings
-k.CVcutoff <- k.CVlogcutoff <- 0.05 #FQ20140820 change 0.1
+k.CVcutoff <- k.CVlogcutoff <- 0.05 
 k.MaxTimePeriod <- 10 #after discuss with Patrick; 10 yr is convension for DHS in IGME #10 #5
 
 # retrospective period keep for each full birth history data series
