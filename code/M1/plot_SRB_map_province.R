@@ -1,5 +1,32 @@
 
-
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 7 Aug 2025
+# plot_SRB_map_province.R
+# 
+# This script generates maps to visualize the projected SRB for each of 
+# the seven provinces of Nepal at five-year intervals from 1980 to 2050,
+# and separately for selected years (2016, 2020, 2035) in a vertical panel layout.
+#
+# used for which run: Main.run
+#
+# this script is called by any other scripts: main_output.R;
+#
+# this script calls other scripts: null
+#
+# functions called: null
+# 
+# input data: null
+#
+# output plots in folder fig/:
+# 1. "Nepal_province_SRB.pdf": SRB maps at 5-year intervals from 1980 to 2050
+# 2. "Nepal_province_SRB_proj.pdf": SRB maps for selected years (2016, 2020, 2035)
+# 
+###############################################################################
 text.cex <- 0.9
 boundary.lwd <- 0.5
 NoDataColor <- "gray" # color for polygons with no data
@@ -48,7 +75,7 @@ for (yr in seq(1980, 2050, 5)) {
     for (j in 1:C.adj) {
       add.code <- npl1.robin$NAME_1[j]
       code.plot <- c(code.plot, add.code)
-    }#end of j loop
+    } # end of j loop
     
     cutoff.labs <- as.character(cut(cutoff, cutoff, include.lowest = TRUE))[-1]
     cutoff.labs <-
@@ -72,8 +99,8 @@ for (yr in seq(1980, 2050, 5)) {
     text(centroidLons, centroidLats, labels = code.plot, cex = 1)
     legend(legend = cutoff.labs, bg = "white", box.col = "white",
            fill = myPalette, "bottomleft", cex = 1)
-  }#end of if(end > start)
-}#end of yr loop
+  } # end of if(end > start)
+} # end of yr loop
 dev.off()
 
 
@@ -123,7 +150,7 @@ for (yr in plot.yr) {
   for (j in 1:C.adj) {
     add.code <- npl1.robin$NAME_1[j]
     code.plot <- c(code.plot, add.code)
-  }#end of j loop
+  } # end of j loop
   
   
   # colouring the districts with range of colours
@@ -138,7 +165,7 @@ for (yr in plot.yr) {
   text(centroidLons, centroidLats, labels = code.plot, cex = 1)
   legend(legend = cutoff.labs, bg = "white", box.col = "white",
          fill = myPalette, "bottomleft", cex = 1)
-}#end of yr loop
+} # end of yr loop
 dev.off()
 
 ## the end ##
