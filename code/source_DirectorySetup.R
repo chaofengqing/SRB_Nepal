@@ -1,4 +1,35 @@
 
+###########################################################################
+# Sex ratio at birth in Vietnam among six subnational regions during 1980–2050, 
+# estimation and probabilistic projection using a Bayesian hierarchical time series model 
+# with 2.9 million birth records.
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 4 Aug 2025
+#
+# source_DirectorySetup.R
+#
+# This script creates and assign all directories used in this project.
+#
+# used for which run: Main.run
+#
+# this script is called by any other scripts: main.R
+#
+# this script calls other scripts: null
+# functions called:                null
+# input data:                      null
+# output data:                     null
+#
+# Folders that you need to create by yourself before you start this project:
+# project folder: SRB_Vietnam/
+# input data folder: SRB_Vietnam/data/input/
+# input population data folder: SRB_Vietnam/data/input/Auxdata
+#
+#
+# Folders that will be created after running this script for a certain run:
+# 1. SRB_Vietnam/data/interim/
+# 2. SRB_Vietnam/data/output/; and its subfolders
+# 3. SRB_Vietnam/fig/; and its subfolders
+#######################################
 
 #######################################
 ## setup directory for data cleaning ##
