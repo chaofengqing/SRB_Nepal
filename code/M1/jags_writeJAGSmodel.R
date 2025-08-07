@@ -1,5 +1,26 @@
-
-
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 7 Aug 2025
+# 
+# jags_writeJAGSmodel.R
+# 
+# This script writes out JAGS model file.
+#
+# used for which run: Main.run
+#
+# this script is called by any other scripts: jags_setupMCMC.R
+#
+# this script calls other scripts: null
+# functions called:                null
+# 
+# input data: most information are from source_BasicSetup and jags_setupMCMC.R.
+#
+# output data: data/output/runname/runname.txt
+#
 ###############################################################################
 
 # JAGS may not work well on sum with many elements. So we split into several
@@ -25,7 +46,7 @@ model {
     r.noadj.i[i] <- exp(logNmu + logP.jt[j.i[i], t.i[i]])
 
     tau.i[i] <- 1 / pow(logSE.i[i], 2)
-    }#end of i loop
+    } # end of i loop
     
     ##################################
     ## alpha.ct - adjustment factor ##
@@ -33,7 +54,7 @@ model {
     
     for (a in 2:A) {
     adjustment.a[a] <- alpha.jt[j.a[a], t.a[a]]
-    }#end of a loop
+    } # end of a loop
     
     for (j in 1:C.adj) {
     for (t in 1:Tend) {
@@ -51,7 +72,7 @@ model {
     beta3.jt[j, t] <- ((a.j[j] - (a.j[j] / D3.j[j]) *
     (t - T2.j[j])) * (t > T2.j[j] && t <= T3.j[j]))
     
-    }#end of k loop
+    } # end of k loop
     
     T1.j[j] <- (T0.j[j] + D1.j[j])
     T2.j[j] <- (T0.j[j] + D1.j[j] + D2.j[j])
@@ -65,7 +86,7 @@ model {
     
     T0.j[j] ~ dt(index.TFRtarget.j[j], tau.TFRtarget, 3)#T(index.TFR6.j[j], )
 
-    }#end of j loop
+    } # end of j loop
 
 
     ###############
@@ -75,8 +96,8 @@ model {
     logP.jt[j, 1] ~ dnorm(0, tau.eps.stat)
     for (t in 2:max.t.j[j]) {
     logP.jt[j, t] ~ dnorm(rho * logP.jt[j, t-1], tau.eps)
-    }#end of t loop
-    }#end of j loop
+    } # end of t loop
+    } # end of j loop
     
     
     ######################################
@@ -85,7 +106,7 @@ model {
     delta.j[j] ~ dbern(p.delta.j[j])
     p.delta.j[j] <- exp(q.delta.j[j]) / (exp(q.delta.j[j]) + 1)
     q.delta.j[j] ~ dnorm(delta.mu, tau.delta)
-    }#end of j loop
+    } # end of j loop
 
     delta.mu <- exp(delta.mu.probscale) / (exp(delta.mu.probscale) + 1)
     
@@ -95,22 +116,22 @@ model {
     tau.TFRtarget <- pow(sigma.TFRtarget, -2)
     tau.eps.stat  <- tau.eps * (1 - pow(rho, 2))
     tau.eps       <- pow(sigma.eps, -2)
-    tau.a.c <- pow(sigma.a.c, -2)
-    tau.D1  <- pow(sigma.D1, -2)
-    tau.D2  <- pow(sigma.D2, -2)
-    tau.D3  <- pow(sigma.D3, -2)
+    tau.a.c   <- pow(sigma.a.c, -2)
+    tau.D1    <- pow(sigma.D1, -2)
+    tau.D2    <- pow(sigma.D2, -2)
+    tau.D3    <- pow(sigma.D3, -2)
     tau.delta <- pow(sigma.delta, -2)
     
     sigma.a.c <- pri.sigma.a.c
-    sigma.D1 <- pri.sigma.D1
-    sigma.D2 <- pri.sigma.D2
-    sigma.D3 <- pri.sigma.D3
+    sigma.D1  <- pri.sigma.D1
+    sigma.D2  <- pri.sigma.D2
+    sigma.D3  <- pri.sigma.D3
     
     delta.mu.probscale ~ dunif(pri.delta.mu.probscale.lower, pri.delta.mu.probscale.upper)
     sigma.TFRtarget ~ dunif(pri.sigma.TFRtarget.lower, pri.sigma.TFRtarget.upper)
     sigma.delta ~ dunif(pri.sigma.delta.lower, pri.sigma.delta.upper)
 
-    }#end of model
+    } # end of model
     
     ",
     sep    = "",
