@@ -16,7 +16,10 @@
 #
 # this script calls other scripts: null
 #
-# functions called: null
+# functions called: function(2) means the function is called twice in this
+# script. Those functions called in the scripts listed above are not listed.
+# SamplesToUI(6)
+# 
 # 
 # input data: null
 #
