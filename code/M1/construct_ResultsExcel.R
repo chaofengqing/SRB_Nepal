@@ -1,9 +1,10 @@
 ###########################################################################
-# Sex ratio at birth in Vietnam among six subnational regions during 1980–2050, 
-# estimation and probabilistic projection using a Bayesian hierarchical time series model 
-# with 2.9 million birth records.
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
 # Code constructed by: Fengqing CHAO
-# Code last revised by: Qiqi Qiang on 4 Aug 2025
+# Code last revised by: Qiqi Qiang on 7 Aug 2025
 #
 # construct_ResultsExcel.R
 #
@@ -14,8 +15,8 @@
 # this script is called by any other scripts: main_output.R
 #
 # this script calls other scripts: null
-# functions called:                null
-# input data:                      null
+# functions called: null
+# input data: null
 # output data: data/output/SRB_by_NepalProvince_estimates_1980_to_2016.csv
 #               data/output/SRB_by_NepalProvince_projections_2017_to_2050.csv
 ###############################################################################
