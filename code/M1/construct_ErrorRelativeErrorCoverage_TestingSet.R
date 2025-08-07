@@ -11,7 +11,7 @@
 #
 # used for which run: Main.run
 #
-# this script is called by any other scripts: main.R
+# this script is called by any other scripts: main_output.R
 #
 # this script calls other scripts: null
 # functions called: null
