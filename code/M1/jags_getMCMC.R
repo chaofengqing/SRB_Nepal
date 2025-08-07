@@ -1,4 +1,28 @@
-
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 7 Aug 2025
+# 
+# jags_getMCMC.R
+# 
+# This script calls JAGS and run the JAGS model on several serves parallely.
+#
+# used for which run: Main.run
+#
+# this script is called by any other scripts: main.R
+#
+# this script calls other scripts: null
+# functions called:                null
+# 
+# input data: most information are from jags_setupMCMC.R.
+#
+# output data: data/output/runname/temp.JAGSobjects/* - stepwise JAGS output
+# note: these output files will be combined in main_output.R to get mcmc.array
+#
+###############################################################################
 
 
 ## RUN FOR JAGS ##
