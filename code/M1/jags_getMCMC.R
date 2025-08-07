@@ -1,4 +1,4 @@
-###############################################################################
+ ###############################################################################
 # Estimation and probabilistic projection of levels and trends 
 # in the sex ratio at birth in seven provinces of Nepal
 # from 1980 to 2050: a Bayesian modeling approach
@@ -39,7 +39,7 @@ foreach(chain = ChainIDs) %dopar% {
   rnorm(chain)
   library(R2jags) # for JAGS (load this when using Putty to submit on wind server)
   
-  mod <- jags(data = mort.data, #inits = mort.inits,
+  mod <- jags(data = mort.data,
               parameters.to.save = mort.parameters,           
               model.file = paste0(output.dir, JAGSmodel.name),
               jags.seed = chain,
@@ -68,9 +68,9 @@ foreach(chain = ChainIDs) %dopar% {
       cat(paste("MCMC results step", i, "for chain", chain, 
                 "written to folder", jagsStep.dir, "at", date(), "\n"))
       
-    }#end of i loop (steps)
-  }#end of if(step > 1) 
-}#end of chain loop
+    } # end of i loop (steps)
+  } # end of if(step > 1) 
+} # end of chain loop
 
 stopImplicitCluster()
 ## the end ##
