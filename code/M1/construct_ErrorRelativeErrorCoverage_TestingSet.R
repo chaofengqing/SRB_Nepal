@@ -1,11 +1,32 @@
+###########################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 7 Aug 2025
+# source_DirectorySetup.R
+#
+# This script print the simulation and validation results.
+#
+# used for which run: Main.run
+#
+# this script is called by any other scripts: main.R
+#
+# this script calls other scripts: null
+# functions called:                null
+# input data:                      null
+# output data:  “Results_CoverageOneperCountrySummary_TestingSet_withError.csv”
+#
+###############################################################################
 
 
 ## simulation/validation results ##
 
 ## read in data ##
-load(file = paste0(output.dir, "cis_", runname, "_simulation.rda")) #res.sim
-load(file = paste0(output.dir, "PredictCI_", runname, ".rda")) #Predict.qe
-load(file = paste0(output.dir, "Predict80CI_", runname, ".rda")) #Predict80.qe
+load(file = paste0(output.dir, "cis_", runname, "_simulation.rda")) # res.sim
+load(file = paste0(output.dir, "PredictCI_", runname, ".rda")) # Predict.qe
+load(file = paste0(output.dir, "Predict80CI_", runname, ".rda")) # Predict80.qe
 
 ## create vectors ##
 r.e <- t.e <- c.e <- year.e <- iso.e <- NULL
