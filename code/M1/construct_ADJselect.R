@@ -1,6 +1,27 @@
-
-
-
+##############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 7 Aug 2025
+# construct_ADJselect.R
+# 
+# This script extracts posterior samples of the adjustment parameters.
+#
+# used for which run: Main.run
+#
+# this script is called by any other scripts: main_output.R
+#
+# this script calls other scripts: null
+#
+# functions called: null
+# 
+# input data: null
+#
+# output data: null
+#
+###############################################################################
 # note: here l refers to posterior sample
 adj.jtl <- adj.nodelta.jtl <- array(0, c(C.adj, Tend, L))
 dimnames(adj.jtl)[[1]] <- dimnames(adj.nodelta.jtl)[[1]] <- name.c[c.adj]
@@ -13,8 +34,8 @@ for (j in 1:C.adj) {
     adj.nodelta.jtl[j, t, ] <- c(mcmc.array[, , adj.parname])
     delta.l <- c(mcmc.array[, , paste0("delta.j[", j, "]")])
     adj.jtl[j, t, ] <- adj.nodelta.jtl[j, t, ] * delta.l
-  }#end of t loop
-}#end of j loop
+  } # end of t loop
+} # end of j loop
 
 selectADJ <- list(adj.jtl = adj.jtl,
                   adj.nodelta.jtl = adj.nodelta.jtl)
