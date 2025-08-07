@@ -1,21 +1,20 @@
-
+c
 
 ###############################################################################
-# A systematic assessment of national, regional and global sex ratios of
-# infant, child and under-five mortality and identification of countries with
-# outlying levels
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
 #
-# Code constructed by: Leontine ALKEMA and Fengqing CHAO
-# Code last revised by: Fengqing CHAO on 25 Feb 2014
-# 
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 7 Aug 2025
 # jags_setupMCMC.R
 # 
 # This script setup parameters, input data, initial values and JAGS model file
 # for JAGS model.
 #
-# used for which run: Main.run; Validation.run; Excl.run
+# used for which run: Main.run
 #
-# this script is called by any other scripts: main*_*.R
+# this script is called by any other scripts: main.R
 #
 # this script calls other scripts: jags_writeJAGSmodel.R
 #
@@ -48,7 +47,7 @@
 # MCMC array structure: ChainIDs is specified in jags_setupMCMC.R (need runID).
 mcmc.chains    <- 10
 ChainIDs       <- seq(1, mcmc.chains)
-mcmc.burnin    <- 1000#10000/5
+mcmc.burnin    <- 1000
 N.STEPS        <- 100
 n.iter.perstep <- 50
 mcmc.thin      <- 1
@@ -59,7 +58,7 @@ mcmc.thin      <- 1
 NoTermPerLine <- 2 #shorten the length of long summition to seperate lines
 
 # import posterior info from reduced model run
-red.info <- read.csv(paste0(input.dir, glb.normal.runname, "_postinfo.csv"), row.names = 1)
+red.info  <- read.csv(paste0(input.dir, glb.normal.runname, "_postinfo.csv"), row.names = 1)
 logNmu    <- log(red.info["a.c[135]", "X50.percentile"]) #Nepal national baseline
 rho       <- red.info["rho", "X50.percentile"]
 sigma.eps <- red.info["sigma.eps", "X50.percentile"]
@@ -71,13 +70,13 @@ for (par in c("a", "D1", "D2", "D3")) {
   msg <- paste0("pri.", par, ".c.mu <- adj.info['", par, ".j[18]', 'X50.percentile']")
   print(msg)
   eval(parse(text = msg))
-}#end of par loop
+} # end of par loop
 
 cv.parameters <- 0.1
 pri.sigma.a.c <- cv.parameters * pri.a.c.mu
-pri.sigma.D1 <- cv.parameters * pri.D1.c.mu
-pri.sigma.D2 <- cv.parameters * pri.D2.c.mu
-pri.sigma.D3 <- cv.parameters * pri.D3.c.mu
+pri.sigma.D1  <- cv.parameters * pri.D1.c.mu
+pri.sigma.D2  <- cv.parameters * pri.D2.c.mu
+pri.sigma.D3  <- cv.parameters * pri.D3.c.mu
 
 ## adjustment factor
 adj.start.range <- 2050.5 - adj.year
@@ -102,9 +101,6 @@ pri.delta.mu.probscale.upper <- 1
 
 ##########
 ## part 1: assign sequence of ChainIDs based on runID
-# ChainIDs <- (runID - 1) * mcmc.chains + seq(1, mcmc.chains) # number of chains for aech script
-
-
 ## get the most recent time index with data for each country
 max.t.j <- min.t.j <- rep(NA, C.adj)
 for (j in 1:C.adj) {
@@ -114,7 +110,7 @@ for (j in 1:C.adj) {
   min.t.j[j] <- min(gett.cz[c, 1], which(years.t == 1950.5))
   # the most rescent time index with data
   max.t.j[j] <- gett.cz[c, nt.c[c]]
-}#end of c loop
+} # end of c loop
 
 
 ##########
@@ -124,7 +120,7 @@ for (j in 1:C.adj) {
   para.alpha <- c(para.alpha,
                   paste0("alpha.jt[", j, ",", 1:Tend, "]")
   )
-}#end of j loop
+} # end of j loop
 
 adj.para <- c(paste0("T0.j[", 1:C.adj, "]"),
               paste0("T3.j[", 1:C.adj, "]"),
@@ -136,8 +132,6 @@ adj.para <- c(paste0("T0.j[", 1:C.adj, "]"),
 delta.para <- c(paste0("delta.j[", 1:C.adj, "]"),
                 paste0("p.delta.j[", 1:C.adj, "]"))
 hyper.para <- c("sigma.TFRtarget",
-                # "a.c.mu", "D1.c.mu", "D2.c.mu", "D3.c.mu",
-                # "sigma.a.c", "sigma.D1", "sigma.D2", "sigma.D3",
                 "delta.mu", "delta.mu.probscale", "sigma.delta")
 mod.para <- c("loglike.i", "logrrep.i")
 paraP <- NULL
@@ -145,16 +139,13 @@ for (j in 1:C.adj) {
   ## from 1950 or the earliest year with data (whichever is earlier) to the most recent
   ## year with data
   paraP <- c(paraP, paste0("logP.jt[", j, ",", 1:max.t.j[j], "]"))
-}#end of c loop
+} # end of c loop
 
 mort.parameters <- c(adj.para,
                      delta.para,
                      paraP, 
                      hyper.para,
                      mod.para)
-
-
-
 ##########
 ## part 3: specify input data for JAGS model
 # adj.timeindex <- which(years.t == adj.year)
