@@ -1,32 +1,40 @@
 
 
 ###############################################################################
-# A systematic assessment of national, regional and global sex ratios of
-# infant, child and under-five mortality and identification of countries with
-# outlying levels
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
 #
-# Code constructed by: Leontine ALKEMA and Fengqing CHAO
-# Code last revised by: Fengqing CHAO on 25 Feb 2014
-# 
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 7 Aug 2025
 # jags_ConvergenceCheck.R
 # 
 # This script checks the convergence of JAGS model output, i.e. mcmc.array. It
 # produces trace plots for (selected) parameters, and compute median, CI, R hat
 #
-# used for which run: Main.run; Validation.run; Excl.run
+# used for which run: Main.run; 
 #
-# this script is called by any other scripts: main*_output.R
+# this script is called by any other scripts: main_output.R
 #
 # this script calls other scripts: null
-# functions called:                null
-# 
-# input data: data/output/runname/mcmc.array_runname.rda
+# functions called: function(2) means the function is called twice in this
+# script. Those functions called in the scripts listed above are not listed.
+# PlotTrace(7)
 #
-# output data: data/output/runname/*_postinfo.csv - R hat; post sample median, CI
-# output plot: fig/runname/convergence/*
+# input data: null
 #
+# output data: data/output/M1_postinfo_exclude-alpha_jt.csv"
+#               data/output/M1_postinfo_alpha_jt.csv
+#               
+# output plot: fig/M1/trace_ADJstartyear_M1.pdf
+#               fig/M1/trace_ADJendyear_M1.pdf
+#               fig/M1/convergence/alpha_density_byDelta.pdf
+#               fig/M1/trace_prob_delta_M1.pdf
+#               fig/M1/trace_delta_M1.pdf
+#               fig/M1/trace_problematic_M1.pdf
+#               fig/M1/trace_problematic_alpha_M1.pdf
+#               fig/M1/convergence/alpha_density_byDelta.pdf
 ###############################################################################
-
 
 ################
 ## trace plot ##
@@ -35,7 +43,7 @@
 pdf(paste0(convergeplot.dir, "trace_", runname, ".pdf"))
 for (par in hyper.para) {
   PlotTrace(parname = par, mcmc.array = mcmc.array)
-}#end of par loop
+} # end of par loop
 dev.off()
 
 ## starting year of adjustment period ##
@@ -44,7 +52,7 @@ for (j in 1:C.adj) {
   par <- paste0("T0.j[", j, "]")
   PlotTrace(parname = par, mcmc.array = mcmc.array,
             main = paste(par, name.c[c.adj[j]]))
-}#end of par loop
+} # end of par loop
 dev.off()
 
 ## ending year of adjustment period ##
@@ -53,7 +61,7 @@ for (j in 1:C.adj) {
   par <- paste0("T3.j[", j, "]")
   PlotTrace(parname = par, mcmc.array = mcmc.array,
             main = paste(par, name.c[c.adj[j]]))
-}#end of par loop
+} # end of par loop
 dev.off()
 
 ## inflation probability ##
@@ -62,7 +70,7 @@ for (j in 1:C.adj) {
   par <- paste0("p.delta.j[", j, "]")
   PlotTrace(parname = par, mcmc.array = mcmc.array,
             main = paste(par, name.c[c.adj[j]]))
-}#end of par loop
+} # end of par loop
 dev.off()
 
 ## inflation probability ##
@@ -71,14 +79,14 @@ for (j in 1:C.adj) {
   par <- paste0("delta.j[", j, "]")
   PlotTrace(parname = par, mcmc.array = mcmc.array,
             main = paste(par, name.c[c.adj[j]]))
-}#end of par loop
+} # end of par loop
 dev.off()
 
 
 ###############################################
 ## compute R hat and post sample information ##
 select.para <- setdiff(dimnames(mcmc.array)[[3]], para.alpha)
-post.full <- getPostInfo(mcmc.array = mcmc.array[, , select.para])
+post.full   <- getPostInfo(mcmc.array = mcmc.array[, , select.para])
 write.csv(post.full, paste0(output.dir, runname, "_postinfo_exclude-alpha_jt.csv")) #checking only
 
 inflated.alpha <- NULL
@@ -86,9 +94,9 @@ for (j in 1:C.adj) {
   yr.start <- ceiling(post.full[paste0("T0.j[", j, "]"), "50 percentile"]) + 1
   yr.end <- floor(post.full[paste0("T3.j[", j, "]"), "50 percentile"]) - 1
   inflated.alpha <- c(inflated.alpha, paste0("alpha.jt[", j, ",", yr.start:yr.end, "]"))
-}#end of j loop
+} # end of j loop
 inflated.alpha <- intersect(inflated.alpha, para.alpha)
-post.alpha <- getPostInfo(mcmc.array = mcmc.array[, , inflated.alpha])
+post.alpha     <- getPostInfo(mcmc.array = mcmc.array[, , inflated.alpha])
 write.csv(post.alpha, paste0(output.dir, runname, "_postinfo_alpha_jt.csv")) #checking only
 
 
@@ -98,7 +106,7 @@ pdf(paste0(convergeplot.dir, "trace_problematic_", runname, ".pdf"))
 for (par in par.select) {
   PlotTrace(parname = par, mcmc.array = mcmc.array,
             main = paste0(par, " Rhat=", round(post.full[par, "Rhat (descending)"], 2)))
-}#end of par loop
+} # end of par loop
 dev.off()
 
 par.select <- rownames(post.alpha)[1:25]#[post.alpha[, "Rhat (descending)"] > 1.1]
@@ -106,7 +114,7 @@ pdf(paste0(convergeplot.dir, "trace_problematic_alpha_", runname, ".pdf"))
 for (par in par.select) {
   PlotTrace(parname = par, mcmc.array = mcmc.array,
             main = paste0(par, " Rhat=", round(post.alpha[par, "Rhat (descending)"], 2)))
-}#end of par loop
+} # end of par loop
 dev.off()
 
 
@@ -124,8 +132,7 @@ for (j in 1:C.adj) {
   yr.end <- ifelse(yr.end > Tend, Tend, yr.end)
   if (length(l.one.select) < L) {
     for (t in yr.start:yr.end) {
-      adj.nodelta <- c(mcmc.array[, , paste0("alpha.jt[", j, ",", t, "]")])
-      
+      adj.nodelta <- c(mcmc.array[, , paste0("alpha.jt[", j, ",", t, "]")]  
       adj0 <- adj.nodelta[l.zero.select]
       adj1 <- adj.nodelta[l.one.select]
       
@@ -139,9 +146,9 @@ for (j in 1:C.adj) {
              c("all (100%)",
                paste0("delta=0 (", round(mean(delta.l == 0)*100), "%)"),
                paste0("delta=1 (", round(mean(delta.l == 1)*100), "%)")))
-    }#end of t loop
-  }#end of if(l.one.select < L)
-}#end of j loop
+    } # end of t loop
+  } # end of if(l.one.select < L)
+} # end of j loop
 dev.off()
 
 ## The End! ##
