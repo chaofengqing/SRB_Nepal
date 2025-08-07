@@ -23,8 +23,8 @@
 #
 # input data: null
 #
-# output data in folder fig/: 
-# 1. CIs_SRB_Nepal_province_M1_bmj.pdf 
+# output plots in folder fig/:
+# 1. CIs_SRB_Nepal_province_M1_bmj.pdf - plots for each province
 ###############################################################################
 pdf(paste0(fig.dir, "CIs_SRB_Nepal_province_", runname, "_bmj.pdf"),
     height = 50, width = 25)
