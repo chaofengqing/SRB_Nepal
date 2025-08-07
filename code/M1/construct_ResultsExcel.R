@@ -5,13 +5,13 @@
 # Code constructed by: Fengqing CHAO
 # Code last revised by: Qiqi Qiang on 4 Aug 2025
 #
-# source_DirectorySetup.R
+# construct_ResultsExcel.R
 #
 # This script saves provincial SRB projections in excel sheet.
 #
 # used for which run: Main.run
 #
-# this script is called by any other scripts: main.R
+# this script is called by any other scripts: main_output.R
 #
 # this script calls other scripts: null
 # functions called:                null
