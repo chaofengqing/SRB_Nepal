@@ -8,7 +8,7 @@
 #
 # plot_countryCIandData(NOimpute).R
 # 
-# This script plots the results for all the countries
+# This script plots the results for all the countries.
 #
 # used for which run: Main.run
 #
@@ -20,26 +20,18 @@
 # script. Those functions called in the scripts listed above are not listed.
 # PlotCIbandwithDataseries(6)
 # 
-# 
 # input data: null
 #
 # output plots in folder fig/:
-# 1. "CIs_SRB_Nepal_province_<runname>_<date>.pdf":
-#    - One-panel plot per province showing estimated SRB with uncertainty bands,
-#      national SRB baseline, and survey data points.
+# 1. CIs_SRB_Nepal_province_M1_<date>.pdf - estimated SRB with uncertainty bands,
+#                                           national SRB baseline, and survey data points.
+# 2. modelFullPeriod_SRB_Nepalprovince_M1.pdf - Combined plot showing full SRB 
+#                                               trajectories for all provinces (1980–2050),
+# 3. modelEsti_SRB_Nepalprovince_M1.pdf - Subplots showing estimated SRB trends 
+#                                         by province for 1980–2016.
 #
-# 2. "modelFullPeriod_SRB_Nepalprovince_<runname>.pdf":
-#    - Combined plot showing full SRB trajectories for all provinces (1980–2050),
-#      with zoomed-in subplots for 1980–2016 and 2016–2050.
-#
-# 3. "modelEsti_SRB_Nepalprovince_<runname>.pdf":
-#    - Subplots showing estimated SRB trends by province for 1980–2016,
-#      including province-specific uncertainty bands.
-#
-# 4. "modelProj_SRB_Nepalprovince_<runname>.pdf":
-#    - Projection-only plot showing SRB trends by province from 2016–2050,
-#      with uncertainty bands and legend.
-
+# 4. modelProj_SRB_Nepalprovince_M1.pdf - Projection plot showing SRB trends 
+#                                        by province from 2016–2050.
 ###############################################################################
 
 ############################################
