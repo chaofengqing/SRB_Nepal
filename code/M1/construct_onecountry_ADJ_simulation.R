@@ -20,8 +20,9 @@
 # 
 # input data: null
 #
-# output data: null
-#
+# output data: data/output/cis_M1_simulation.rda
+#               data/output/PredictCI_M1.rda
+#               data/output/Predict80CI_M1.rda
 ###############################################################################
 
 ## simulate SRB inflation for each country to check model performance ##
@@ -64,7 +65,7 @@ for (j in 1:C.adj) {
     D1.l[l] <- rtrunc(n = 1, spec = "norm", a = 0, mean = pri.D1.c.mu, sd = pri.sigma.D1)
     D2.l[l] <- rtrunc(n = 1, spec = "norm", a = 0, mean = pri.D2.c.mu, sd = pri.sigma.D2)
     D3.l[l] <- rtrunc(n = 1, spec = "norm", a = 0, mean = pri.D3.c.mu, sd = pri.sigma.D3)
-  }#end of l loop
+  } # end of l loop
   
   T1.l <- T0.l + D1.l
   T2.l <- T1.l + D2.l
