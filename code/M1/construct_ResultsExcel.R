@@ -7,7 +7,7 @@
 #
 # construct_ResultsExcel.R
 #
-# This script saves provincial SRB projections in excel sheet.
+# This script saves provincial SRB estimations and projections in excel sheet.
 #
 # used for which run: Main.run
 #
@@ -16,18 +16,8 @@
 # this script calls other scripts: null
 # functions called:                null
 # input data:                      null
-# output data:                     null
-#
-# Folders that you need to create by yourself before you start this project:
-# project folder: SRB_Vietnam/
-# input data folder: SRB_Vietnam/data/input/
-# input population data folder: SRB_Vietnam/data/input/Auxdata
-#
-#
-# Folders that will be created after running this script for a certain run:
-# 1. SRB_Vietnam/data/interim/
-# 2. SRB_Vietnam/data/output/; and its subfolders
-# 3. SRB_Vietnam/fig/; and its subfolders
+# output data: data/output/SRB_by_NepalProvince_estimates_1980_to_2016.csv
+#               data/output/SRB_by_NepalProvince_projections_2017_to_2050.csv
 ###############################################################################
 
 
@@ -51,7 +41,7 @@ for (c in 1:C) {
   add.data[, "Model.Estimate"] <- c(res.proj$R2.jqt[name.c[c], , paste(years.print.t)])
   
   data.out <- rbind(data.out, add.data)
-}#end of c loop
+} # end of c loop
 
 write.csv(data.out, row.names = FALSE, na = "",
           file = paste0(output.dir, "SRB_by_NepalProvince_estimates_",
@@ -78,7 +68,7 @@ for (c in 1:C) {
   add.data[, "Model.Projection"] <- c(res.proj$R2.jqt[name.c[c], , paste(years.print.t)])
   
   data.out <- rbind(data.out, add.data)
-}#end of c loop
+} # end of c loop
 
 write.csv(data.out, row.names = FALSE, na = "",
           file = paste0(output.dir, "SRB_by_NepalProvince_projections_",
