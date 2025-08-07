@@ -1,4 +1,16 @@
-
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 7 Aug 2025
+#
+# plot_CI_SRB_NepalProvince.R
+#
+#
+#
+###############################################################################
 pdf(paste0(fig.dir, "CIs_SRB_Nepal_province_", runname, "_bmj.pdf"),
     height = 50, width = 25)
 text.cex <- 4.5
