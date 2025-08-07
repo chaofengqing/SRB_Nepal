@@ -1,8 +1,50 @@
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 7 Aug 2025
+#
+# plot_countryCIandData(NOimpute).R
+# 
+# This script plots the results for all the countries
+#
+# used for which run: Main.run
+#
+# this script is called by any other scripts: main_output.R;
+#
+# this script calls other scripts: null
+#
+# functions called: function(2) means the function is called twice in this
+# script. Those functions called in the scripts listed above are not listed.
+# PlotCIbandwithDataseries(6)
+# 
+# 
+# input data: null
+#
+# output plots in folder fig/:
+# 1. "CIs_SRB_Nepal_province_<runname>_<date>.pdf":
+#    - One-panel plot per province showing estimated SRB with uncertainty bands,
+#      national SRB baseline, and survey data points.
+#
+# 2. "modelFullPeriod_SRB_Nepalprovince_<runname>.pdf":
+#    - Combined plot showing full SRB trajectories for all provinces (1980–2050),
+#      with zoomed-in subplots for 1980–2016 and 2016–2050.
+#
+# 3. "modelEsti_SRB_Nepalprovince_<runname>.pdf":
+#    - Subplots showing estimated SRB trends by province for 1980–2016,
+#      including province-specific uncertainty bands.
+#
+# 4. "modelProj_SRB_Nepalprovince_<runname>.pdf":
+#    - Projection-only plot showing SRB trends by province from 2016–2050,
+#      with uncertainty bands and legend.
 
+###############################################################################
 
 ############################################
 ## plot the results for all the countries ##
-# read in cleaned database of SRB by Indian state
+# read in cleaned database of SRB by Nepal state
 
 surveyplot.i <- paste0(typename.i, " (", surveyyear.i, ")")
 surveyplot.i <- gsub("Standard DHS", "DHS", surveyplot.i)
@@ -64,8 +106,6 @@ PlotCIbandwithDataseries(
   alpha.point      = 1,
   alpha.polygon    = 0.5,
   year.t = yr.start:yr.end,
-  # CI1s = res.country$R.cqt["India", , paste(yr.start:yr.end)], colCI = 1,
-  # nameCI1 = "whole India", legendCI.posi = "topright",
   x = year.i, select.x = TRUE, cex.dataseries = 2,
   x.lim = range(year.i) + c(-1, 1), max.legend = 60,
   ylab = "Sex Ratio at Birth", xlab = "", cutoff = exp(logNmu),
@@ -118,7 +158,6 @@ pdf(paste0(fig.dir, "modelEsti_SRB_Nepalprovince_", runname, ".pdf"),
     height = 10*1.6, width = 13*2.5)
 par(cex.lab = 3.6, cex.axis = 3.6, mgp = c(8.3, 2, 0), mar = c(5, 11, 5, 1),
     cex.main = 3.6, las = 1, tcl = -1, mfrow = c(2, 4))
-# R.IND.qt <- res.IND.full$R.qt
 year.i <- rep(years.t-0.5, each = C)
 r.i <- c(res.proj[["R2.jqt"]][name.c, 2, ])
 surveyplot.i <- rep(name.c, times = Tend)
@@ -144,12 +183,6 @@ PlotCIbandwithDataseries(
   ylab = "Sex Ratio at Birth", xlab = "", cutoff = exp(logNmu),
   lwd.dataseries = 3, legendSurvey.posi = "topleft", cex.legend = 3.6)
 
-# dataset <- read.csv(paste0(interim.dir, srb.filename),
-#                     header = TRUE, stringsAsFactors = FALSE, strip.white = TRUE)
-# Inclusion <- dataset$Inclusion
-# dataset <- dataset[Inclusion, ]
-# source(paste0("code/", runname, "/source_DataSetup.R"))
-
 colchart.c <- c("darkorange1",
               "darkorchid",
               "yellowgreen",
@@ -159,14 +192,10 @@ colchart.c <- c("darkorange1",
               "cornflowerblue", #"goldenrod3",
               "cyan")
 for (c in 1:C) {
-  # c.select <- which(name.i == name.c[c] & year.i > 1980)
-  # select <- c.select[order(surveyplot.i[c.select])]
   
   R.qt <- res.proj[["R2.jqt"]][c, , paste(yr.start:yr.end)]
   
   PlotCIbandwithDataseries(
-    # if.SurveyLegend = TRUE,
-    # dataseries = r.i, 
     SElim = plot.lim, datalim = plot.lim,
     # baseSeries = "VR", Source = surveyplot.i,
     main = paste0("SRB in Province ", c),
@@ -187,26 +216,6 @@ pdf(paste0(fig.dir, "modelProj_SRB_Nepalprovince_", runname, ".pdf"),
     height = 20/2, width = 13)
 par(cex.lab = 2.7, cex.axis = 2.5, mgp = c(6.2, 1.4, 0), mar = c(4, 8.2, 4, 1),
     cex.main = 3.2, las = 1, tcl = -1)#, mfrow = c(2, 1))
-# yr.start <- 1980
-# yr.end <- 2050
-# year.i <- rep(yr.start:yr.end, each = C)
-# r.i <- c(res.proj[["R2.jqt"]][name.c, 2, paste(yr.start:yr.end)])
-# surveyplot.i <- rep(name.c, times = length(yr.start:yr.end))
-# plot.lim <- range(r.i, na.rm = TRUE)
-# 
-# PlotCIbandwithDataseries(
-#   if.SurveyLegend = FALSE, if.sepLegendPage = FALSE,
-#   dataseries = r.i, SElim = plot.lim, datalim = plot.lim,
-#   baseSeries = "VR", Source = surveyplot.i,
-#   main = "SRB by Nepal Province",
-#   alpha.dataseries = 1,
-#   alpha.point      = 1,
-#   alpha.polygon    = 0.5,
-#   year.t = yr.start:yr.end,
-#   x = year.i, select.x = TRUE, cex.dataseries = 2,
-#   x.lim = range(year.i) + c(-1, 1), max.legend = 60,
-#   ylab = "Sex Ratio at Birth", xlab = "", cutoff = exp(logNmu),
-#   lwd.dataseries = 2, legendSurvey.posi = "topright", cex.legend = 2.5)
 # # zoom in on 2016-2050
 yr.start <- 2016
 yr.end <- 2050
