@@ -14,9 +14,12 @@
 # this script is called by any other scripts: main.R
 #
 # this script calls other scripts: null
-# functions called:                null
-# input data:                      null
-# output data:  “Results_CoverageOneperCountrySummary_TestingSet_withError.csv”
+# functions called: null
+# input data: data/output/cis_M1_simulation.rda
+#              data/output/PredictCI_M1.rda
+#              data/output/Predict80CI_M1.rda
+# output data: data/output/
+#               Results_CoverageOneperCountrySummary_TestingSet_withError.csv
 #
 ###############################################################################
 
