@@ -5,7 +5,7 @@
 #
 # Code constructed by: Fengqing CHAO
 # Code last revised by: Qiqi Qiang on 7 Aug 2025
-# source_DirectorySetup.R
+# construct_ErrorRelativeErrorCoverage_TestingSet.R
 #
 # This script print the simulation and validation results.
 #
