@@ -1,4 +1,25 @@
 
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+# 
+# getPostInfo.R
+# 
+# This script contains function which extracts posterior summaries (percentiles and R-hat) 
+# for all parameters from an MCMC array.
+#
+# Functions are: function1(.., function2(3), ..); means function2 is called
+# three times inside function1.
+#
+# getPostInfo(..)
+#
+#
+###############################################################################
+#------------------------------------------------------------------------------
 
 getPostInfo <- function(
   mcmc.array,
@@ -32,3 +53,4 @@ getPostInfo <- function(
                                 "Percentile.Rhat (100%)")  
   return(post.full)
 }#end of getPostInfo function
+
