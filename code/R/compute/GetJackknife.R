@@ -1,4 +1,20 @@
-
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+# 
+# GetJackknife.R
+# 
+# This script contains all functions related to Jackknife estimate and SE.
+# Functions are: function1(.., function2(3), ..); means function2 is called
+# three times inside function1.
+# GetJackknife(..)
+###############################################################################
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 
 GetJackknife <- function(
   data.i, # full sample
@@ -20,13 +36,13 @@ GetJackknife <- function(
     select.i <- (cluster.i == cluster.u[u])
     
     # the u-th partial prediction SRB(-u)
-    malebirth <- sum((data.i[!select.i] == "Male") *
+    malebirth   <- sum((data.i[!select.i] == "Male") *
                        weight.i[!select.i], na.rm = TRUE)
     femalebirth <- sum((data.i[!select.i] == "Female") *
                          weight.i[!select.i], na.rm = TRUE)
     partial.u[u] <- GetSRB(malebirth, femalebirth)
     
-  }#end of u loop    
+  } # end of u loop    
   
   # Jackknife estimate and SE
   # original scale
@@ -39,4 +55,4 @@ GetJackknife <- function(
   result <- list(est = est, se = se, estlog = estlog, selog = selog)
   return(result)
   
-}#end of GetJackknife() function
+} # end of GetJackknife() function
