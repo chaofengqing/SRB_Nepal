@@ -8,7 +8,7 @@
 # 
 # source_sensitivityanalysis_Phi.R
 # 
-# This script is the results of the paper.
+# This script performs sensitivity analysis of the Phi process.
 #
 # used for which run: Main.run
 #
