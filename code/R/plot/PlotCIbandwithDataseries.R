@@ -1,4 +1,24 @@
-
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+# 
+# PlotCIbandwithDataseries.R
+# 
+# This script contains function which plots confidence interval bands 
+# and median estimate lines over time from posterior summaries for data series.
+#
+# Functions are: function1(.., function2(3), ..); means function2 is called
+# three times inside function1.
+#
+# PlotCIbandwithDataseries(..)
+#
+#
+###############################################################################
+#------------------------------------------------------------------------------
 
 PlotCIbandwithDataseries <- function(
   plotLegendOnly = FALSE,
@@ -285,4 +305,5 @@ PlotCIbandwithDataseries <- function(
   }#end of if.SurveyLegend  
   
 }#end of PlotCIbandwithDataseries() function
+
 
