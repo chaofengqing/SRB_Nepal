@@ -16,7 +16,7 @@ for (par in par.list) {
       yr <- years.t[round(post.info[parname, "X50.percentile"])]-0.5
       msg1 <- paste(msg1, paste( "& ", yr))
 
-    }#end of run loop
+    } # end of run loop
     
     for (run in runname.list) {
       post.info <- read.csv(paste0("data/output/", run, "/", run, "_postinfo_exclude-alpha_jt.csv"),
@@ -30,10 +30,10 @@ for (par in par.list) {
       yr2 <- years.t[t2]-0.5
       msg2 <- paste(msg2, " & ", paste0("(", yr1, ", ", yr2, ")"))
       
-    }#end of run loop
+    } # end of run loop
     msg0 <- paste0(msg1, "\\", "\\ \n", msg2, "\\", "\\\ \\hline \n")
     msg.out <- paste(msg.out, msg0)
-  }#end of c loop
+  } # end of c loop
   cat("\n\n\n", par, "\n")
   cat(msg.out)
 }#end of par loop
@@ -42,7 +42,7 @@ for (run in runname.list) {
   load(file = paste0("data/output/", run, "/traj_", run, "_R2.jtl.rda")) #res.trajS2
   name.out <- paste0("res_traj", which(run == runname.list)); print(name.out)
   eval(parse(text = paste0("res_traj", which(run == runname.list), " <- res.trajS2")))
-}#end of run loop
+} # end of run loop
 
 ##############################
 ## SRB difference 1980-2050 ##
@@ -73,10 +73,10 @@ for (j in 1:C) {
     
     msg2 <- paste(msg2, " & ", paste0("(", round(diff.q[1], rud.num), ", ",
                                       round(diff.q[3], rud.num), ")"))
-  }#end of run loop
+  } # end of run loop
   msg0 <- paste0(msg1, "\\", "\\ \n", msg2, "\\", "\\\ \\hline \n")
   msg.out <- paste(msg.out, msg0)
-}#end of j loop
+} # end of j loop
 cat(par, "\n")
 cat(msg.out)
 
@@ -97,7 +97,7 @@ for (j in 1:C) {
     diff.q <- SamplesToUI(apply(diff.tl, 2, mean, na.rm = TRUE))
     
     msg1 <- paste(msg1, paste( "& ", round(diff.q[2], rud.num)))
-  }#end of run loop
+  } # end of run loop
   
   for (run in 2) {
     res.traj <- eval(parse(text = paste0("res_traj", run)))
@@ -111,7 +111,7 @@ for (j in 1:C) {
   }#end of run loop
   msg0 <- paste0(msg1, "\\", "\\ \n", msg2, "\\", "\\\ \\hline \n")
   msg.out <- paste(msg.out, msg0)
-}#end of j loop
+} # end of j loop
 cat(parname, "\n")
 cat(msg.out)
 
@@ -132,7 +132,7 @@ for (j in 1:C) {
     diff.q <- SamplesToUI(apply(diff.tl, 2, mean, na.rm = TRUE))
     
     msg1 <- paste(msg1, paste( "& ", round(diff.q[2], rud.num)))
-  }#end of run loop
+  } # end of run loop
   
   for (run in 2) {
     res.traj <- eval(parse(text = paste0("res_traj", run)))
@@ -143,10 +143,10 @@ for (j in 1:C) {
     
     msg2 <- paste(msg2, " & ", paste0("(", round(diff.q[1], rud.num), ", ",
                                       round(diff.q[3], rud.num), ")"))
-  }#end of run loop
+  } # end of run loop
   msg0 <- paste0(msg1, "\\", "\\ \n", msg2, "\\", "\\\ \\hline \n")
   msg.out <- paste(msg.out, msg0)
-}#end of j loop
+} # end of j loop
 cat(parname, "\n")
 cat(msg.out)
 
