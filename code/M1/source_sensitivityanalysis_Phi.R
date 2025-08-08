@@ -23,10 +23,10 @@
 # 
 # input data:
 # 1. data/Aux_data/district_DHScode.csv
-# 2. data/output/M1_postinfo_exclude-alpha_jt.csv"
-# - "data/output/M1/selectP_M1.rda"
-# - "data/output/M1_test_normal/selectP_M1_test_normal.rda"
-# - "data/output/M1_test_normal_ar2/selectP_M1_test_normal_ar2.rda"
+# 2. data/output/M1_postinfo_exclude-alpha_jt.csv
+# 3. data/output/M1/selectP_M1.rda
+# 4. data/output/M1_test_normal/selectP_M1_test_normal.rda
+# 5. data/output/M1_test_normal_ar2/selectP_M1_test_normal_ar2.rda
 #
 # output data: null
 #
