@@ -1,4 +1,20 @@
-
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+# 
+#GetIndiaStateCode.R
+# 
+# This script contains all functions related to getting India State code.
+# Functions are: function1(.., function2(3), ..); means function2 is called
+# three times inside function1.
+# GetIndiaStateCode(..)
+###############################################################################
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 GetIndiaStateCode <- function(name.in) {
   
   ## get India state code names ##
@@ -35,4 +51,4 @@ GetIndiaStateCode <- function(name.in) {
   code.out <- ifelse(name.in == "West Bengal", "WB", paste(code.out))
   
   return(code.out)
-}#end of GetIndiaStateCode function
+} # end of GetIndiaStateCode function
