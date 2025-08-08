@@ -1,4 +1,22 @@
-
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+# 
+# 
+# ConvertYYtoYYYY.R
+# 
+# This script contains a utility function to convert two-digit years 
+# into four-digit years.
+# 
+# Functions are: function1(.., function2(3), ..); means function2 is called
+# three times inside function1.
+# ConvertYYtoYYYY(..)
+# 
+#################################################
 
 ConvertYYtoYYYY <- function(yy.date) {
   ## convert YY to YYYY format ##
