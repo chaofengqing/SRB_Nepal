@@ -1,3 +1,24 @@
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+# 
+# StandardizeSignifDigit.R
+# 
+# This script contains function which rounds an input number to 
+# match the number of significant digits of a reference number.
+#
+# Functions are: function1(.., function2(3), ..); means function2 is called
+# three times inside function1.
+#
+# StandardizeSignifDigit(..)
+#
+#
+###############################################################################
+#------------------------------------------------------------------------------
 
 
 StandardizeSignifDigit <- function (
@@ -12,10 +33,11 @@ StandardizeSignifDigit <- function (
     } else {
       power <- 0
     }
-  }#end of power loop
+  } # end of power loop
   
   number.out <- round(number.in / 10^power) * 10^power
   
   return(number.out)
   
-}#end of StandardizeSignifDigit function
+} # end of StandardizeSignifDigit function
+
