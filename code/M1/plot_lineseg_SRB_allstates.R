@@ -9,7 +9,7 @@
 # plot_lineseg_SRB_allstates.R
 # 
 # This script compares the estimated SRB and its confidence intervals 
-# for multiple regions of Vietnam
+# for multiple regions of Nepal
 #
 # used for which run: Main.run
 #
