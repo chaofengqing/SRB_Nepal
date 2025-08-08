@@ -1,5 +1,34 @@
-
-
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 7 Aug 2025
+#
+# plot_countrySRB&TFR.R
+#
+# This script plot the results containing SRB and TFR for all the countries
+#
+# used for which run: Main.run
+#
+# this script is called by any other scripts: main_output.R;
+#
+# this script calls other scripts: null
+#
+# functions called: function(2) means the function is called twice in this
+# script. Those functions called in the scripts listed above are not listed.
+# PlotCIbandwithDataseries(2)
+#
+# input data: null
+# 
+# output plots in folder fig/ :
+# 1.CIs_adj-Country_senario_proj_M1.pdf - One plot per country comparing SRB 
+#                                         from 3 scenarios (S1, S2, S3)
+# 2. "CIs_adj-Country_S1_M1.pdf"
+# 3. "CIs_adj-Country_S2_M1.pdf"
+# 4. "CIs_adj-Country_S3_M1.pdf"
+###############################################################################
 ############################################
 ## plot the results for all the countries ##
 
@@ -29,8 +58,8 @@ for (country in plot.country) { #c in c.asia: now plot a subset of Asian countri
   R2.qt <- res.proj[["R2.jqt"]][j, , select.t]
   R3.qt <- res.proj[["R3.jqt"]][j, , select.t]
 
-  s2.l.prob <- res.proj[["S2.l.select.prob.j"]][j]*100
-  s3.l.prob <- res.proj[["S3.l.select.prob.j"]][j]*100
+  s2.l.prob  <- res.proj[["S2.l.select.prob.j"]][j]*100
+  s3.l.prob  <- res.proj[["S3.l.select.prob.j"]][j]*100
   plot.range <- range(R1.qt, R2.qt, R3.qt, exp(logr.i[select]), na.rm = TRUE)
   par(las = 1)
   PlotCIbandwithDataseries(
@@ -75,7 +104,7 @@ for (country in plot.country) { #c in c.asia: now plot a subset of Asian countri
        labels = paste0(floor(start.yr), "\n(TFR=", round(start.tfr, 1), ")"))
   text(x = end.yr, y = max(tfr, na.rm = TRUE) - 0.2, pos = 4, col = col.tfr, cex = text.cex,
        labels = paste0(floor(end.yr)))
-}#end of c loop
+} # end of c loop
 dev.off()
 
 
@@ -143,10 +172,10 @@ for (scna in 1:3) {
     text(x = end.yr, y = max(tfr, na.rm = TRUE) - 0.2, pos = 2, col = col.tfr, cex = text.cex,
          labels = paste0(floor(end.yr)))
     
-  }#end of c loop
+  } # end of c loop
   dev.off()
   
-}#end of scna loop
+} # end of scna loop
 
 
 ## the end ##
