@@ -12,11 +12,14 @@
 #
 # used for which run: Main.run
 #
-# this script is called by any other scripts: main.R and main_output.R
+# this script is called by any other scripts: main_output.R
 # 
 # this script calls other scripts: null
 #
-# functions called: null
+# functions called: function(2) means the function is called twice in this
+# script. Functions called in the scripts listed above are not listed.
+# PlotCIbandwithDataseries(1) - data series plots for checking purpose.
+# 
 # 
 # input data:
 # 1. data/Aux_data/district_DHScode.csv
@@ -24,8 +27,10 @@
 # - "data/output/M1/selectP_M1.rda"
 # - "data/output/M1_test_normal/selectP_M1_test_normal.rda"
 # - "data/output/M1_test_normal_ar2/selectP_M1_test_normal_ar2.rda"
-
+#
 # output data: null
+#
+# output plots in folder fig/ - sensitivity_Phi_Nepalprovince.pdf
 #############################################################################
 
 runname.list <- c("M1", "M1_test_normal", "M1_test_normal_ar2")
