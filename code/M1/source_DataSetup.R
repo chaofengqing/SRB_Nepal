@@ -1,4 +1,48 @@
-
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+# 
+# source_dataSetup.R
+# 
+# This script setup data and indices for modelling and output.
+#
+# used for which run: Main.run
+#
+# this script is called by any other scripts: main.R
+#
+# this script calls other scripts: null
+#
+# functions called: function(2) means the function is called twice in this
+# script. Functions called in the scripts listed above are not listed.
+# PlotCIbandwithDataseries(1) - data series plots for checking purpose.
+# 
+# input data: null
+#
+# output data: null
+#
+# output plot in folder fig/M1/: if Main.run & First.run
+#
+# 1. dataSeries_ForModel(noimputeSE)_date.pdf
+#
+# Data setup summary in several parts:
+#
+# part 2b: remove entries in SR data base if there is no IGME estimate for
+# its corresponding mortality
+#
+# part 4a: get source types and make sure VR is the last type
+#
+# part 4b: get imputed standard error on log-scale
+#
+# part 6: get indices about country, year, region
+#
+# part 7: get indices for non-missing P.ct's to avoid sampling for all P.ct's
+# instead, only sample the t.i's that have an observation
+#
+###############################################################################
 ##########
 ## part 2b: remove entries in SR data base if there is no IGME estimate for
 # its corresponding mortality
@@ -13,8 +57,8 @@ surveyyear.i    <- data.all[, "Series.Year"       ]
 logSEnoimpute.i <- data.all$SE.logSRB.Jackknife
 r.i             <- data.all[, "Observed.SRB"      ]
 logr.i          <- log(r.i)
-surveyplot.i <- paste0(typename.i, " (", surveyyear.i, ")")
-surveyplot.i <- gsub("Standard DHS", "DHS", surveyplot.i)
+surveyplot.i    <- paste0(typename.i, " (", surveyyear.i, ")")
+surveyplot.i    <- gsub("Standard DHS", "DHS", surveyplot.i)
 surveyplot.i[typename.i == "SRS"] <- "SRS"
 
 ## summary of the database used to fit the model ##
@@ -124,7 +168,7 @@ if (First.run) {
   }#end of c loop
   dev.off()
   
-}#end of if(First.run)
+} # end of if(First.run)
 
 
 ##########
@@ -139,7 +183,7 @@ for (i in 1:I) {
   # find country-year for each index
   c.i[i] <- which(name.c == name.i[i])
   t.i[i] <- which(years.t == floor(year.i[i]) + 0.5)
-}#end of i loop
+} # end of i loop
 
 
 ##########
@@ -165,7 +209,7 @@ for (c in 1:C) {
   nt.c[c] <- length(gett)
   gett.cz[c, 1:nt.c[c]] <- gett
   
-}#end of c loop
+} # end of c loop
 
 gett.cz <- gett.cz[, 1:max(nt.c)]
 
@@ -174,7 +218,7 @@ if (prod((source.i == S)[typename.i == "VR"]) != 1) {
   print("STOP: VR is not sourcetype S!")
 } else {
   print("Great! VR is indeed sourcetype S!")
-}#end of ifelse(prod((source.i == S)[typename.i == "VR"]) != 1)
+} # end of ifelse(prod((source.i == S)[typename.i == "VR"]) != 1)
 
 
 ## The END! ##
