@@ -1,4 +1,23 @@
-
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+# 
+# StandardizeDecimal.R
+# 
+# This script contains function related to making number.in to round to n.round. 
+#
+# Functions are: function1(.., function2(3), ..); means function2 is called
+# three times inside function1.
+#
+# StandardizeDecimal(..)
+#
+#
+###############################################################################
+#------------------------------------------------------------------------------
 
 StandardizeDecimal <- function(
   number.in,
@@ -9,4 +28,5 @@ StandardizeDecimal <- function(
   number.out <- format(as.numeric(round(number.in, n.round)), nsmall = n.round)
   
   return(number.out)
-}#end of StandardizeDecimal()
+} # end of StandardizeDecimal()
+
