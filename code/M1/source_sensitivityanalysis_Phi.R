@@ -1,3 +1,27 @@
+ ###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+# 
+# source_sensitivityanalysis_Phi.R
+# 
+# This script is the results of the paper.
+#
+# used for which run: Main.run
+#
+# this script is called by any other scripts: main.R and main_output.R
+# 
+# this script calls other scripts: null
+#
+# functions called: null
+# 
+# input data: data/Aux_data/district_DHScode.csv
+#             data/output/M1_postinfo_exclude-alpha_jt.csv
+# output data: null
+#############################################################################
 
 runname.list <- c("M1", "M1_test_normal", "M1_test_normal_ar2")
 
@@ -36,7 +60,7 @@ for (c in 1:C) {
     x.lim = c(yr.start, yr.end),
     ylab = "Sex Ratio at Birth", xlab = "", cutoff = 0,
     lwd.dataseries = 3, legendCI.posi = "topleft", cex.legend = 2.5)
-}#end of c loop
+} # end of c loop
 plot(0, type = "n", xlab = "", ylab = "", main = "", xaxt = "n", yaxt = "n", bty = "n")
 legend("left", c(expression(paste("AR(1); fix ", rho, ",", sigma[epsilon])),
                  expression(paste("AR(1); model ", rho, ",", sigma[epsilon])),
