@@ -1,4 +1,34 @@
-
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+#
+# plot_lineseg_SRB_allstates.R
+# 
+# This script compares the estimated SRB and its confidence intervals 
+# for multiple regions of Vietnam
+#
+# used for which run: Main.run
+#
+# this script is called by any other scripts: main_output.R;
+#
+# this script calls other scripts: null
+#
+# functions called: function(2) means the function is called twice in this
+# script. Those functions called in the scripts listed above are not listed.
+# PlotCIsegments(1)
+# 
+# input data: null
+#
+# output plots in folder fig/: 
+# 1.SRB_all_states_2030order.pdf - compares SRB in 2030, 2010, and 1980
+# 2.SRB_all_states_2016order.pdf - compares SRB in 2016, 2000, and 1980
+#
+# 
+###############################################################################
 
 
 for (k in 1:2) {
@@ -43,7 +73,7 @@ for (k in 1:2) {
          lty = 1, lwd = 4, pch = 19, cex = text.cex, bg = "white")
   box()
   dev.off()
-}#end of k loop
+} # end of k loop
 
 ## the end ##
 
