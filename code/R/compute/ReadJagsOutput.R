@@ -1,4 +1,24 @@
-
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+# 
+# ReadJagsOutput.R
+# 
+# This script contains function related to reading and combining JAGS simulation outputs 
+# saved in multiple steps and chains.The output is returned as a MCMC array.
+#
+#
+# Functions are: function1(.., function2(3), ..); means function2 is called
+# three times inside function1.
+# ReadJagsOutput(..)
+# 
+###############################################################################
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 
 ReadJagsOutput <- function(
   n.steps, n.chains = 3, #n.thin=1,
@@ -7,7 +27,7 @@ ReadJagsOutput <- function(
   # note 2: if you get over maxiter, the thinning can be off at end and start of step
   # note 3: still better than thinning after reading in all the steps because array becomes too large
   ChainNums = NULL,  #note: ChainNums overwrites n.chains if provided
-  start.step = 1, #by default start reading in the first step
+  start.step = 1, # by default start reading in the first step
   runname,
   output.dir = jagsStep.dir #"output/" # directory to save jags objects
 ){
@@ -51,11 +71,11 @@ ReadJagsOutput <- function(
         load(paste0(jagsStep.dir, jags.filename))
         mcmc.array[((step - start.step) * n.iter.perstep + 1):((step - start.step + 1) * n.iter.perstep),
                    chain, ] <- model.update$BUGSoutput$sims.array[iter.pick, 1, ]
-      }#end of step loop
-    }#end of if (n.steps > 1)
-  }#end of chain loop
+      } # end of step loop
+    } # end of if (n.steps > 1)
+  } # end of chain loop
   
   
   return(mcmc.array)
   
-}#end of ReadJagsOutput function
+} # end of ReadJagsOutput function
