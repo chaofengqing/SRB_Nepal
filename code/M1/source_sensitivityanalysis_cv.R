@@ -1,4 +1,37 @@
-
+#################################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+# 
+# source_sensitivityanalysis_Phi.R
+# 
+# This script performs sensitivity analysis of the Phi process.
+#
+# used for which run: Main.run
+#
+# this script is called by any other scripts: main_output.R
+# 
+# this script calls other scripts: null
+#
+# functions called: function(2) means the function is called twice in this
+# script. Functions called in the scripts listed above are not listed.
+# PlotCIbandwithDataseries(1) - data series plots for checking purpose.
+# 
+# 
+# input data:
+# 1. data/Aux_data/district_DHScode.csv
+# 2. data/output/M1_postinfo_exclude-alpha_jt.csv"
+# - "data/output/M1/selectP_M1.rda"
+# - "data/output/M1_test_normal/selectP_M1_test_normal.rda"
+# - "data/output/M1_test_normal_ar2/selectP_M1_test_normal_ar2.rda"
+#
+# output data: null
+#
+# output plots in folder fig/ - sensitivity_Phi_Nepalprovince.pdf
+#############################################################################
 runname.list <- c("M1", "M1_cv1over5", "M1_cv1over2")#, "M1_cv1")
 cv.list <- c(0.1, 0.2, 0.5)
 par.list <- c("a.j", "D1.j", "D2.j", "D3.j")
@@ -17,7 +50,7 @@ for (par in par.list) {
       
       msg1 <- paste(msg1, paste( "& ", round(post.info[parname, "X50.percentile"], rud.num)))
 
-    }#end of run loop
+    } # end of run loop
     
     for (run in runname.list) {
       post.info <- read.csv(paste0("data/output/", run, "/", run, "_postinfo_exclude-alpha_jt.csv"),
@@ -27,19 +60,19 @@ for (par in par.list) {
        msg2 <- paste(msg2, " & ", paste0("(", round(post.info[parname, "X2.5.percentile"], rud.num), ", ",
                            round(post.info[parname, "X97.5.percentile"], rud.num), ")"))
       
-    }#end of run loop
+    } # end of run loop
     msg0 <- paste0(msg1, "\\", "\\ \n", msg2, "\\", "\\\ \\hline \n")
     msg.out <- paste(msg.out, msg0)
-  }#end of c loop
+  } # end of c loop
   cat("\n\n\n", par, "\n")
   cat(msg.out)
-}#end of par loop
+} # end of par loop
 
 for (run in runname.list) {
   load(file = paste0("data/output/", run, "/traj_", run, "_R2.jtl.rda")) #res.trajS2
   name.out <- paste0("res_traj", which(run == runname.list)); print(name.out)
   eval(parse(text = paste0("res_traj", which(run == runname.list), " <- res.trajS2")))
-}#end of run loop
+} # end of run loop
 
 ## SRB difference 1980-2050 ##
 msg.out <- NULL
@@ -58,7 +91,7 @@ for (j in 1:C) {
     diff.q <- SamplesToUI(apply(diff.tl, 2, mean, na.rm = TRUE))
     
     msg1 <- paste(msg1, paste( "& ", round(diff.q[2], rud.num)))
-  }#end of run loop
+  } # end of run loop
   
   for (run in 2:3) {
     res.traj <- eval(parse(text = paste0("res_traj", run)))
@@ -69,7 +102,7 @@ for (j in 1:C) {
     
     msg2 <- paste(msg2, " & ", paste0("(", round(diff.q[1], rud.num), ", ",
                                       round(diff.q[3], rud.num), ")"))
-  }#end of run loop
+  } # end of run loop
   msg0 <- paste0(msg1, "\\", "\\ \n", msg2, "\\", "\\\ \\hline \n")
   msg.out <- paste(msg.out, msg0)
 }#end of j loop
@@ -93,9 +126,9 @@ for (j in 1:C) {
     diff.q <- SamplesToUI(apply(diff.tl, 2, mean, na.rm = TRUE))
     
     msg1 <- paste(msg1, paste( "& ", round(diff.q[2], rud.num)))
-  }#end of run loop
+  } #  end of run loop
   
-  for (run in 2:3) {
+  for (run in 2:3){
     res.traj <- eval(parse(text = paste0("res_traj", run)))
     diff.tl <- res.traj$R2.jtl[j, paste(yr.start:yr.end), ] -
       res_traj1$R2.jtl[j, paste(yr.start:yr.end), ]
@@ -183,6 +216,6 @@ for (c in 1:C) {
     ylab = "Sex Ratio at Birth", xlab = "", cutoff = exp(logNmu),
     lwd.dataseries = 3, legendCI.posi = "topleft", cex.legend = 2.5)
   abline(v = 2016)
-}#end of c loop
+} # end of c loop
 dev.off()
 
