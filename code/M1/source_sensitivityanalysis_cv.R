@@ -6,9 +6,10 @@
 # Code constructed by: Fengqing CHAO
 # Code last revised by: Qiqi Qiang on 8 Aug 2025
 # 
-# source_sensitivityanalysis_Phi.R
+# source_sensitivityanalysis_cv.R
 # 
-# This script performs sensitivity analysis of the Phi process.
+# This script performs a sensitivity analysis on the coefficient of variation (CV)
+# used in the prior of the latent process Phi, by comparing multiple model runs.
 #
 # used for which run: Main.run
 #
@@ -18,19 +19,24 @@
 #
 # functions called: function(2) means the function is called twice in this
 # script. Functions called in the scripts listed above are not listed.
-# PlotCIbandwithDataseries(1) - data series plots for checking purpose.
+# 1. SamplesToUI(8): compute uncertainty intervals from posterior samples
+# 2. PlotCIbandwithDataseries(1): plot SRB trajectories with uncertainty bands
 # 
 # 
 # input data:
-# 1. data/Aux_data/district_DHScode.csv
-# 2. data/output/M1_postinfo_exclude-alpha_jt.csv"
-# - "data/output/M1/selectP_M1.rda"
-# - "data/output/M1_test_normal/selectP_M1_test_normal.rda"
-# - "data/output/M1_test_normal_ar2/selectP_M1_test_normal_ar2.rda"
+# 1. data/output/M1/M1_postinfo_exclude-alpha_jt.csv"
+# 2. data/output/M1_cv1over5/M1_cv1over5_postinfo_exclude-alpha_jt.csv"
+# 3. data/output/M1_cv1over2/M1_cv1over2_postinfo_exclude-alpha_jt.csv"
+# 4. data/output/M1/traj_M1_R2.jtl.rda"
+# 5. data/output/M1_cv1over5/traj_M1_cv1over5_R2.jtl.rda"
+# 6. data/output/M1_cv1over2/traj_M1_cv1over2_R2.jtl.rda"
+# 7. data/output/M1/cis_M1_senario_proj.rda"
+# 8. data/output/M1_cv1over5/cis_M1_cv1over5_senario_proj.rda"
+# 9. data/output/M1_cv1over2/cis_M1_cv1over2_senario_proj.rda"
 #
 # output data: null
 #
-# output plots in folder fig/ - sensitivity_Phi_Nepalprovince.pdf
+# output plots in folder fig/ - sensitivity_CV_SRB_Nepalprovince.pdf
 #############################################################################
 runname.list <- c("M1", "M1_cv1over5", "M1_cv1over2")#, "M1_cv1")
 cv.list <- c(0.1, 0.2, 0.5)
@@ -88,7 +94,7 @@ for (j in 1:C) {
     diff.tl <- res.traj$R2.jtl[j, paste(yr.start:yr.end), ] -
       res_traj1$R2.jtl[j, paste(yr.start:yr.end), ]
     diff.qt <- SamplesToUI(t(diff.tl))
-    diff.q <- SamplesToUI(apply(diff.tl, 2, mean, na.rm = TRUE))
+    diff.q  <- SamplesToUI(apply(diff.tl, 2, mean, na.rm = TRUE))
     
     msg1 <- paste(msg1, paste( "& ", round(diff.q[2], rud.num)))
   } # end of run loop
@@ -98,14 +104,14 @@ for (j in 1:C) {
     diff.tl <- res.traj$R2.jtl[j, paste(yr.start:yr.end), ] -
       res_traj1$R2.jtl[j, paste(yr.start:yr.end), ]
     diff.qt <- SamplesToUI(t(diff.tl))
-    diff.q <- SamplesToUI(apply(diff.tl, 2, mean, na.rm = TRUE))
+    diff.q  <- SamplesToUI(apply(diff.tl, 2, mean, na.rm = TRUE))
     
     msg2 <- paste(msg2, " & ", paste0("(", round(diff.q[1], rud.num), ", ",
                                       round(diff.q[3], rud.num), ")"))
   } # end of run loop
   msg0 <- paste0(msg1, "\\", "\\ \n", msg2, "\\", "\\\ \\hline \n")
   msg.out <- paste(msg.out, msg0)
-}#end of j loop
+} # end of j loop
 cat(par, "\n")
 cat(msg.out)
 
@@ -123,7 +129,7 @@ for (j in 1:C) {
     diff.tl <- res.traj$R2.jtl[j, paste(yr.start:yr.end), ] -
       res_traj1$R2.jtl[j, paste(yr.start:yr.end), ]
     diff.qt <- SamplesToUI(t(diff.tl))
-    diff.q <- SamplesToUI(apply(diff.tl, 2, mean, na.rm = TRUE))
+    diff.q  <- SamplesToUI(apply(diff.tl, 2, mean, na.rm = TRUE))
     
     msg1 <- paste(msg1, paste( "& ", round(diff.q[2], rud.num)))
   } #  end of run loop
@@ -133,7 +139,7 @@ for (j in 1:C) {
     diff.tl <- res.traj$R2.jtl[j, paste(yr.start:yr.end), ] -
       res_traj1$R2.jtl[j, paste(yr.start:yr.end), ]
     diff.qt <- SamplesToUI(t(diff.tl))
-    diff.q <- SamplesToUI(apply(diff.tl, 2, mean, na.rm = TRUE))
+    diff.q  <- SamplesToUI(apply(diff.tl, 2, mean, na.rm = TRUE))
     
     msg2 <- paste(msg2, " & ", paste0("(", round(diff.q[1], rud.num), ", ",
                                       round(diff.q[3], rud.num), ")"))
@@ -172,7 +178,7 @@ for (j in 1:C) {
     
     msg2 <- paste(msg2, " & ", paste0("(", round(diff.q[1], rud.num), ", ",
                                       round(diff.q[3], rud.num), ")"))
-  }#end of run loop
+  } # end of run loop
   msg0 <- paste0(msg1, "\\", "\\ \n", msg2, "\\", "\\\ \\hline \n")
   msg.out <- paste(msg.out, msg0)
 }#end of j loop
