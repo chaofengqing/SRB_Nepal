@@ -6,7 +6,7 @@
 # Code constructed by: Fengqing CHAO
 # Code last revised by: Qiqi Qiang on 8 Aug 2025
 # 
-# source_adj_dataSetup.R
+# source_paperReullts.R
 # 
 # This script is the results of the paper.
 #
