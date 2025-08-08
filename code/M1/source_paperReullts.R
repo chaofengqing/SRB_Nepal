@@ -1,4 +1,27 @@
-
+ ###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+# 
+# source_adj_dataSetup.R
+# 
+# This script is the results of the paper.
+#
+# used for which run: Main.run
+#
+# this script is called by any other scripts: main.R and main_output.R
+# 
+# this script calls other scripts: null
+#
+# functions called: null
+# 
+# input data: data/Aux_data/district_DHScode.csv
+#             data/output/M1_postinfo_exclude-alpha_jt.csv
+# output data: null
+#############################################################################
 
 ## paper results ##
 yr <- 2016
@@ -19,7 +42,7 @@ for (p in 1:7) {
   msg <- paste(pro.info[pro.info$Province.Name == p, "District.Name"], collapse = "; ")
   print(paste(sum(pro.info$Province.Name == p), "Districts"))
   print(msg)
-}#end of p loop
+} # end of p loop
 range(pro.info$District.Code)
 
 
