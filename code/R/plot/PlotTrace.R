@@ -1,4 +1,23 @@
-
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+# 
+# PlotTrace.R
+# 
+# This script contains function relating to the trace plot for one parameter 
+# and adding loess smoother for each chain.
+#
+# Functions are: function1(.., function2(3), ..); means function2 is called
+# three times inside function1.
+#
+# PlotTrace(..)
+#
+###############################################################################
+#------------------------------------------------------------------------------
 
 PlotTrace <- function(#Traceplot for one parameter
   ## Trace plot for one parameter and add loess smoother for each chain ##
@@ -19,3 +38,4 @@ PlotTrace <- function(#Traceplot for one parameter
   }
   
 }#end of PlotTrace function
+
