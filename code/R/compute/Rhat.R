@@ -1,4 +1,23 @@
-
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+# 
+# Rhat.R
+# 
+# This script contains function related to computing the Gelman-Rubin R_hat. 
+# The functions accept MCMC arrays and return R-hat values to check convergence.
+#
+# Functions are: function1(.., function2(3), ..); means function2 is called
+# three times inside function1.
+# Rhat1(..)
+# Rhat(..,Rhat1(3),..) 
+#
+###############################################################################
+#------------------------------------------------------------------------------
 
 Rhat1 <- function(mat) {
   ## compute R hat for mcmc.array to check convergence ##
@@ -21,10 +40,8 @@ Rhat1 <- function(mat) {
   
   return(R)
   
-}#end of Rhat1 function
+} # end of Rhat1 function
 
-
-#------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 
 
@@ -37,4 +54,5 @@ Rhat <- function(arr) {
   
   return(apply(arr, 3, Rhat1))
   
-}#end of Rhat function
+} # end of Rhat function
+
