@@ -1,4 +1,4 @@
- ###############################################################################
+#################################################################################
 # Estimation and probabilistic projection of levels and trends 
 # in the sex ratio at birth in seven provinces of Nepal
 # from 1980 to 2050: a Bayesian modeling approach
@@ -18,8 +18,13 @@
 #
 # functions called: null
 # 
-# input data: data/Aux_data/district_DHScode.csv
-#             data/output/M1_postinfo_exclude-alpha_jt.csv
+# input data:
+# 1. data/Aux_data/district_DHScode.csv
+# 2. data/output/M1_postinfo_exclude-alpha_jt.csv"
+# - "data/output/M1/selectP_M1.rda"
+# - "data/output/M1_test_normal/selectP_M1_test_normal.rda"
+# - "data/output/M1_test_normal_ar2/selectP_M1_test_normal_ar2.rda"
+
 # output data: null
 #############################################################################
 
