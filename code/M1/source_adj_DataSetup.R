@@ -1,4 +1,47 @@
-
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+# 
+# source_adj_dataSetup.R
+# 
+# This script extra data for adjustment factor.
+#
+# used for which run: Main.run
+#
+# this script is called by any other scripts: main.R
+#
+# this script calls other scripts: null
+#
+# functions called: function(2) means the function is called twice in this
+# script. Functions called in the scripts listed above are not listed.
+# PlotCIbandwithDataseries(1) - data series plots for checking purpose.
+# 
+# input data: null
+#
+# output data: null
+#
+# output plot in folder fig/M1/: if Main.run & First.run
+#
+# 1. dataSeries_ForModel(noimputeSE)_date.pdf
+#
+# Data setup summary in several parts:
+#
+# part 2b: remove entries in SR data base if there is no IGME estimate for
+# its corresponding mortality
+#
+# part 4: source types and make sure VR is the last type
+#
+# part 6: get indices about country, year, region
+#
+# part 7: get indices for non-missing P.ct's to avoid sampling for all P.ct's
+# instead, only sample the t.i's that have an observation
+#
+# 
+###############################################################################
 
 ## extra data for adjustment factor ##
 
