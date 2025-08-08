@@ -1,4 +1,24 @@
-
+###############################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+# 
+# SamplesToUI.R
+# 
+# This script contains function related to computing specified percentiles 
+# from posterior samples.
+#
+# Functions are: function1(.., function2(3), ..); means function2 is called
+# three times inside function1.
+#
+# SamplesToUI(..)
+#
+#
+###############################################################################
+#------------------------------------------------------------------------------
 
 SamplesToUI <- function (
   samples.jt, # inputs, note that it also works for samples.j
@@ -17,3 +37,4 @@ SamplesToUI <- function (
   return (result.qt)
   
 }#end of SamplesToUI function
+
