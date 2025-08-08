@@ -1,4 +1,40 @@
-
+#################################################################################
+# Estimation and probabilistic projection of levels and trends 
+# in the sex ratio at birth in seven provinces of Nepal
+# from 1980 to 2050: a Bayesian modeling approach
+#
+# Code constructed by: Fengqing CHAO
+# Code last revised by: Qiqi Qiang on 8 Aug 2025
+# 
+# source_sensitivityanalysis_t_dist_df.R
+# 
+# This script performs a sensitivity analysis comparing two model assumptions
+# for the error distribution in the time series process
+#
+# used for which run: Main.run
+#
+# this script is called by any other scripts: main_output.R
+# 
+# this script calls other scripts: null
+#
+# functions called: function(2) means the function is called twice in this
+# script. Functions called in the scripts listed above are not listed.
+# 1. SamplesToUI(8): compute uncertainty intervals from posterior samples
+# 2. PlotCIbandwithDataseries(1): plot SRB trajectories with uncertainty bands
+# 
+# 
+# input data:
+# 1. data/output/M1/M1_postinfo_exclude-alpha_jt.csv
+# 2. data/output/M1_t_dist_df/M1_t_dist_df_postinfo_exclude-alpha_jt.csv
+# 3. data/output/M1/traj_M1_R2.jtl.rda
+# 4. data/output/M1_t_dist_df/traj_M1_t_dist_df_R2.jtl.rda
+# 5. data/output/M1/cis_M1_senario_proj.rda
+# 6. data/output/M1_t_dist_df/cis_M1_t_dist_df_senario_proj.rda
+#
+# output data: null
+#
+# output plots in folder fig/ - sensitivity_t_dist_SRB_Nepalprovince.pdf
+#############################################################################
 runname.list <- c("M1", "M1_t_dist_df")
 par.list <- c("T0.j")
 
@@ -185,6 +221,6 @@ for (c in 1:C) {
     ylab = "Sex Ratio at Birth", xlab = "", cutoff = exp(logNmu),
     lwd.dataseries = 3, legendCI.posi = "topleft", cex.legend = 2.5)
   abline(v = 2016)
-}#end of c loop
+} # end of c loop
 dev.off()
 
