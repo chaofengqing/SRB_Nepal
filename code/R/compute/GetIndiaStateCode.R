@@ -6,7 +6,7 @@
 # Code constructed by: Fengqing CHAO
 # Code last revised by: Qiqi Qiang on 8 Aug 2025
 # 
-#GetIndiaStateCode.R
+# GetIndiaStateCode.R
 # 
 # This script contains all functions related to getting India State code.
 # Functions are: function1(.., function2(3), ..); means function2 is called
