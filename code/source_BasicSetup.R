@@ -73,9 +73,8 @@ k.MaxTimePeriod <- 10 #after discuss with Patrick; 10 yr is convension for DHS i
 k.RetroPeriod <- 25
 
 # cutoff for under-reported VR data: ratio of number of live birth (VR over WPP)
-k.Underreport <- 0.8#0.85 #CFQ: increase from 0.8 to 0.85 in order to exclude Saint Lucia 1956 VR
-k.Underreport.relax <- 0.75#0.8 #VR inclusion criteria: relax the cutoff once VR data get included.
-# e.g. lower the threshold from 85% to 80%
+k.Underreport <- 0.8
+k.Underreport.relax <- 0.75
 
 # import Nepal region info
 ecological.zone <- c("Mountain", "Hill", "Terai")
@@ -134,7 +133,6 @@ cm <- 1 / 2.54
 
 # write JAGS model (jags_writeJAGSmodel.R)
 NoTermPerLine <- 2 #shorten the length of long summition to seperate lines
-
 plotWhichP <- 30 # trace plot for logP.ct: too many of them, only plot some
 
 ## assign input file names ##
