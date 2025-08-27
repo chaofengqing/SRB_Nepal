@@ -6,7 +6,7 @@
 # Code constructed by: Fengqing CHAO
 # Code last revised by: Qiqi Qiang on 7 Aug 2025 
 # 
-# construct_logPselect.R
+# construct_onecountry_ADJ_simulation.R
 # 
 # This script is to simulate SRB inflation for each country to check model performance.
 #
