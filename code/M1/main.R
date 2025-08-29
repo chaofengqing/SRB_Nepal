@@ -26,9 +26,11 @@
 # functions called: Null
 # 
 #
-# output data in folder data/:
-# 1. interim/database_for_modeling_2020-05-11.csv - the SR database for modelling
-# 2. output/M1/temp.JAGSobjects/  - stepwise JAGS trajectory output
+# input data:
+# data/interim/database_for_modeling_2020-05-11.csv - the SR database for modelling
+# 
+# output data:
+# data/output/M1/temp.JAGSobjects/  - stepwise JAGS trajectory output
 # Note: only the main output data are listed here since it is a master script.
 #
 ###############################################################################
